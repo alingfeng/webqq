@@ -80,10 +80,6 @@ body {
 .rel {
     position: relative;
 }
-.plt{
-    left: 0;
-    top: 0;
-}
 /* 鼠标样式 */
 .poi{
     cursor: pointer;
@@ -112,10 +108,6 @@ body {
     opacity: 1;
     filter: alpha(opacity:100);/* 兼容IE6 7 8 */
 }
-/* 边框 */
-.bdd{
-    border: 1px solid #ddd;
-}
 /*单行文字溢出虚点显示  后续处理看是否需要*/
 .ell{
     overflow: hidden;
@@ -124,10 +116,11 @@ body {
 }
 
 
-
 /* skin 皮肤 */
 .theme_box,
 .theme_box img {
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
 }
@@ -138,6 +131,8 @@ body {
 
 /* 头部吊顶 */
 .top_btn_box {
+    left: 0;
+    top: 0;
     z-index: 2;
     width: 100%;
     height: 30px;
@@ -175,6 +170,8 @@ body {
 
 /* 顶部皮肤盒子 */
 .top_skin_box {
+    left: 0;
+    top: 0;
     z-index: 3;
     width: 100%;
     height: 0px;
@@ -200,20 +197,16 @@ body {
 .top_menu_list li {
     margin: 0 4px;
 }
-.top_menu_list a,
-.top_upFileBtn,
-.top_useImg,
-.top_noImg{
+
+.top_menu_list a {
+    padding: 0 5px;
+    line-height: 30px;
     -webkit-transition: background .3s, color .3s;
     -moz-transition: background .3s, color .3s;
     -ms-transition: background .3s, color .3s;
     transition: background .3s, color .3s;
 }
 
-.top_menu_list a {
-    padding: 0 5px;
-    line-height: 30px;
-}
 .top_skin_sq {
     float: right;
     padding-left: 18px;
@@ -233,6 +226,8 @@ body {
 }
 
 .top_select_pic ul {
+    left: 0;
+    top: 0;
     width: 590px;
     height: 246px;
 }
@@ -268,9 +263,9 @@ body {
     height: 184px;
     border: 1px solid #eee;
     background: url(../images/gn/add_img.png)
-                no-repeat
-                center 5px
-                rgba(0, 0, 0, 0.02);
+    no-repeat
+    center 5px
+    rgba(0, 0, 0, 0.02);
 }
 
 /* 上传图片规格 */
@@ -289,17 +284,18 @@ body {
     width: 210px;
     height: 36px;
 }
-.top_upFileBtn,
 
-.top_useImg,
-.top_noImg {
-    font: 16px/36px "微软雅黑";
-}
 .top_upFileBtn {
     display: block;
     border-radius: 3px;
     background: #00b7ee;
+    font: 16px/36px "微软雅黑";
+    -webkit-transition: background .3s, color .3s;
+    -moz-transition: background .3s, color .3s;
+    -ms-transition: background .3s, color .3s;
+    transition: background .3s, color .3s;
 }
+
 /* 用于js使用  因为此法不兼容IE低版本 */
 .top_upFileBtn:hover,
 .top_useImg:hover,
@@ -324,14 +320,21 @@ body {
     width: 100px;
     height: 36px;
     margin-right: 10px;
+    border: 1px solid #ddd;
     border-radius: 3px;
+    font: 16px/36px "微软雅黑";
+    -webkit-transition: background .3s, color .3s;
+    -moz-transition: background .3s, color .3s;
+    -ms-transition: background .3s, color .3s;
+    transition: background .3s, color .3s;
 }
 
 .top_useImg {
-    background-color: #00B7ee;
+    background: #00B7ee;
 }
 
 .top_noImg {
+    background: #fff;
     color: #000;
 }
 
@@ -349,6 +352,8 @@ body {
 .top_login,
 .top_reg,
 .top_change_password {
+    left: 0;
+    top: 0;
     z-index: 3;
     width: 400px;
     margin: 0 auto;
@@ -380,7 +385,8 @@ body {
 .top_change_password_title {
     height: 60px;
     border-bottom: 1px solid #000;
-    background: no-repeat center center;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 
 .top_login_title {
@@ -449,9 +455,7 @@ body {
     height: 50px;
 }
 .top_log_btn,
-.top_reg_sub_btn,
-.top_change_btn,
-.top_not_change_btn{
+.top_reg_sub_btn{
     width: 240px;
     height: 35px;
     font: 500 18px/36px "微软雅黑";
@@ -604,6 +608,19 @@ body {
     width: 260px;
 }
 
+.top_change_btn,
+.top_not_change_btn {
+    width: 100px;
+    height: 35px;
+    margin-right: 20px;
+    font: 500 18px/36px "微软雅黑";
+    background: #ff9c00;
+    -webkit-transition: background-color 1s linear;
+    -moz-transition: background-color 1s linear;
+    -ms-transition: background-color 1s linear;
+    transition: background-color 1s linear;
+}
+
 .ts_margin {
     margin-right: 10px;
 }
@@ -616,6 +633,7 @@ body {
     width: 318px;
     height: 300px;
     padding: 10px 26px 42px;
+    border: 1px solid #ddd;
     border-radius: 5px;
     background-image: -webkit-linear-gradient(top, #5A66F5, rgb(67, 70, 167));
     box-shadow: 0 0 5px 0 #031;
@@ -642,7 +660,7 @@ body {
 }
 
 .top_weather_temp {
-    line-height: 54px;
+    line-height: 55px;
 }
 
 .top_weather_details {
@@ -682,6 +700,8 @@ body {
 
 /* 天气小助手  省市县三级联动 */
 .top_weather_assistant {
+    top: 0;
+    left: 0;
     z-index: 3;
     width: 420px;
     height: 170px;
@@ -731,15 +751,16 @@ body {
     width: 90px;
     max-height: 224px;
     border: 1px solid #ded3c1;
-    background-color: #fff;
+    background: #fff;
     overflow-y: auto;
+    white-space: nowrap;
 }
 
 .top_select_options li {
     padding-left: 10px;
     color: #333;
     white-space: nowrap;
-    font: 12px/30px "微软雅黑"
+    font: 12px/28px "微软雅黑"
 }
 
 /* 用js解决兼容问题 */
@@ -757,7 +778,9 @@ body {
     width: 100px;
     height: 30px;
     margin-right: 10px;
+    border: 1px solid #ddd;
     line-height: 30px;
+    background: #fff;
 }
 
 /*  用js解决兼容问题 */
@@ -816,14 +839,15 @@ body {
     display: inline-block;
     width: 20px;
     height: 20px;
-    background: url(../images/page/webqq_icon.png) no-repeat;
+    background-image: url(../images/page/webqq_icon.png);
+    background-repeat: no-repeat;
 }
 .left_fun_1 {
     background-position: -80px -108px;
 }
 
 .left_fun_2 {
-    background-position: 0 -108px;
+    background-position: 0px -108px;
 }
 
 .left_fun_3 {
@@ -864,32 +888,38 @@ body {
 
 /*桌面app*/
 .desk_app{
-    top: 0;
+    top: 0px;
     left: 100px;
 }
 .desk_app_box{
     top: 95px;
-    left: 0;
+    left: 0px;
 }
 .desk_app_list{
+    left: 0;
+    top: 0;
+}
+.desk_app_list{
+    top: 0px;
+    left: 0px;
     width: 90px;
     height: 90px;
     padding: 5px 5px 0 5px;
 }
 .file_icon {
-    width: 50%;
-    height: 50%;
+    width: 50% ;
+    height: 50% ;
     padding-top: 5px;
 }
 .file_name {
     display: inline-block;
-    width: 80%;
+    width: 80% ;
     height: 20px;
     margin-top: 5px;
     border-radius: 10px;
     font: normal 12px/20px "宋体";
     background: rgba(0, 0, 0, 0.2);
- }
+}
 .file_title {
     width: 52px;
     height: auto;
@@ -987,7 +1017,8 @@ body {
     left: 0;
     width: 200px;
     height: 30px;
-    background: url(../images/page/webqq_icon.png) -112px -70px;
+    background-image: url(../images/page/webqq_icon.png);
+    background-position: -112px -70px;
     line-height: 30px;
 }
 .app_top_seacrh_input{/* 兼容等待处理 */
@@ -997,9 +1028,10 @@ body {
     height: 20px;
     line-height: 20px;
     background: transparent;
+    color: #fff;
 }
 .search_words{
-   left: 4px;
+    left: 4px;
     top: 6px;
     font: 14px/20px "宋体";
 }
@@ -1038,10 +1070,11 @@ body {
     font: normal 12px/30px "宋体";
 }
 /*.menu_item:hover{!* 用js解决兼容问题 *!*/
-    /*background-color: #ccc;*/
-    /*cursor: default;*/
+/*background-color: #ccc;*/
+/*cursor: default;*/
 /*}*/
 .arrow_more{
+    float: right;
     top: 10px;
     right: 15px;
     display: block;
@@ -1061,9 +1094,9 @@ body {
 }
 /*添加默认勾选状态*/
 .right_menu_second_level .checked h2 {
-    background: url(../images/gn/checked.png)
-                5px center
-                no-repeat;
+    background-image: url(../images/gn/checked.png);
+    background-position: 5px center;
+    background-repeat: no-repeat;
 }
 
 
@@ -1102,12 +1135,13 @@ body {
 .upload_choice_area{
     top: 0;
     padding: 132px 5px 0 5px;
-    background: url(../images/gn/add_img.png)
-                no-repeat
-                center 5px
-                rgba(0, 0, 0, 0);
+    background: url("../images/gn/add_img.png")
+    no-repeat
+    center 5px
+    rgba(0, 0, 0, 0);
 
     font-size: 18px;
+    color: #ccc;
 }
 /* 上传按钮 */
 .upload_btn_wrap{
@@ -1134,12 +1168,14 @@ body {
     padding: 80px 0;
     vertical-align: middle;
     border: 1px dashed #ddd;
+    background: #fff no-repeat 20px center;
     color: #999;
 }
 .drag_drop_area,
 .upload_success_info{
     width: 98% ;
     margin: 5px;
+    border: 1px solid #ddd;
 }
 .drag_drop_area li{
     float: left;
@@ -1155,7 +1191,8 @@ body {
 .upload_progress {
     height: auto;
     margin: 2px 0 0 5px;
-    padding: 0 20px;
+    padding: 0px 20px;
+    border: 1px solid #ddd;
 }
 
 .upload_progress_bar{
@@ -1220,7 +1257,7 @@ a.upload_delete_btn {/* 以后要去掉a 留下.后面 */
     width: 116px;
     height: 40px;
     margin-right: 5px;
-    background: #00b7ee;
+    background: #00B7EE;
     font: 18px/40px "宋体";
 }
 
@@ -1235,7 +1272,7 @@ a.upload_delete_btn {/* 以后要去掉a 留下.后面 */
 .popup_title_wrap{
     width: 100%;
     height: 30px;
-    box-shadow: 0 -1px 1px #9b9b9b;
+    box-shadow: 0 -1px 1px #9B9B9B;
     line-height: 30px;
     background: #87c1fe;
 }
@@ -1255,7 +1292,8 @@ a.upload_delete_btn {/* 以后要去掉a 留下.后面 */
     right: 20px;
     width: 20px;
     height: 20px;
-    background:url(../images/gn/popup_control.png) no-repeat;
+    background-image:url(../images/gn/popup_control.png);
+    background-repeat: no-repeat;
 }
 .close_btn_img{
     background-position: -4px -100px;
@@ -1288,11 +1326,14 @@ a.upload_delete_btn {/* 以后要去掉a 留下.后面 */
 
 /* 桌面便签 */
 .notepad{
+    top: 0;
+    left: 0;
     z-index: 6;
     width: 400px;
     padding-bottom: 10px;
     background: #fff6C1;
     box-shadow: 0 0 4px 0 #000;
+    font-family: '微软雅黑';
 }
 .notepad_title{
     height: 36px;
@@ -1310,6 +1351,8 @@ a.upload_delete_btn {/* 以后要去掉a 留下.后面 */
     min-height: 330px;
 }
 .notepad_con{
+    top: 0;
+    left: 0;
     z-index: 100;
     width: 400px;
     height: 400px;
@@ -1414,9 +1457,12 @@ a.upload_delete_btn {/* 以后要去掉a 留下.后面 */
     width: 100%;
     height: 100%;
     padding-top: 30px;
+    background: #fff;
 }
 /*此div.con_cover 目的用来覆盖iframe内容的，因为iframe引入的网页是不能够拖拽的，需要一个设置为背景设置为透明色覆盖在其上面，防止鼠标在iframe区域拖拽事件不器作用*/
 .popup_con_cover {
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background: transparent;/* 后续兼容处理 */
@@ -1451,6 +1497,8 @@ a.upload_delete_btn {/* 以后要去掉a 留下.后面 */
     overflow: hidden;
 }
 .fold_menu_run{
+    top: 0;
+    left: 0;
     width: 112px;
     height: 46px;
     line-height: 46px;
