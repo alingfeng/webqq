@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>webQQ</title>
     <link rel="stylesheet" href="css/index.css">
+    <script type="text/javascript" src="js/tools.js"></script>
+    <script type="text/javascript" src="js/move.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
 </head>
 <body>
     <!--皮肤区域开始-->
@@ -13,11 +16,11 @@
     <!--皮肤区域结束-->
     <!--顶部功能区按钮开始-->
     <div class="top_btn_box abs plt">
-        <div class="top_btn_list abs">
+        <div class="top_btn_list abs" id="top_btn_list">
             <a href="javascript:;">换肤</a><span>|</span>
-            <a href="javascript:;">登陆</a><span>|</span>
+            <a class="dd bb" href="javascript:;">登陆</a><span>|</span>
             <a href="javascript:;">注册</a><span>|</span>
-            <a href="javascript:;">天气</a>
+            <a class="dd nn" href="javascript:;">天气</a>
         </div>
     </div>
     <!--顶部功能区按钮结束-->
@@ -355,7 +358,7 @@
     <!--桌面app图标-->
     <div class="desk_app abs" id="web_icon">
         <div class="desk_app_box" id="desk_tag">
-            <ul class="desk_app_list abs opa1 show tc plt">
+            <ul class="desk_app_list abs opa1 hide tc plt">
                 <li>
                     <a href="javascript:;">
                         <img class="file_icon" src="images/page/1.png" alt="网络硬盘"/>
