@@ -11,12 +11,12 @@
 <body>
     <!--皮肤区域开始-->
     <div class="theme_box abs ovh plt">
-        <img class="abs ovh plt" src="images/theme/t1.jpg">
+        <img class="abs ovh" id="themeImg" src="images/theme/t1.jpg">
     </div>
     <!--皮肤区域结束-->
     <!--顶部功能区按钮开始-->
     <div class="top_btn_box abs plt">
-        <div class="top_btn_list abs" id="top_btn_list">
+        <div class="top_btn_list abs" id="topBtnList">
             <a href="javascript:;">换肤</a><span>|</span>
             <a class="dd bb" href="javascript:;">登陆</a><span>|</span>
             <a href="javascript:;">注册</a><span>|</span>
@@ -25,9 +25,9 @@
     </div>
     <!--顶部功能区按钮结束-->
     <!--皮肤盒子结束-->
-    <div class="top_skin_box abs bgff opa0 ovh plt">
+    <div class="top_skin_box abs bgff opa0 ovh plt" id="skinBox">
         <div class="top_menu_box">
-            <ul class="top_menu_list">
+            <ul class="top_menu_list" id="skinSelect">
                 <li class="top_current"><a href="javascript:;">卡通</a></li>
                 <li><a href="javascript:;">明星</a></li>
                 <li><a href="javascript:;">简约</a></li>
@@ -35,13 +35,13 @@
                 <li><a href="javascript:;">情侣</a></li>
                 <li><a href="javascript:;">自定义</a></li>
             </ul>
-            <a id="sq" class="top_skin_sq" href="javascript:;">收起</a>
+            <a id="sqBtn" class="top_skin_sq" href="javascript:;">收起</a>
         </div>
         <!--分割线-->
         <div class="top_line"></div>
         <!--图片盒子开始-->
         <div class="top_img_box clear_fix">
-            <div class="top_select_pic fl">
+            <div class="top_select_pic fl" id="selectBox">
                 <!--卡通图片-->
                 <ul class="show plt">
                     <li><img class="big poi" src="images/skin/0.jpg"></li>
@@ -58,7 +58,7 @@
                     <li><img class="last" src="images/skin/11.jpg"></li>
                 </ul>
                 <!--明星图片-->
-                <ul class="hide plt">
+                <ul>
                     <li><img class="big" src="images/skin/12.jpg"></li>
                     <li><img src="images/skin/13.jpg"></li>
                     <li><img src="images/skin/14.jpg"></li>
@@ -73,7 +73,7 @@
                     <li><img class="last" src="images/skin/23.jpg"></li>
                 </ul>
                 <!--简约图片-->
-                <ul class="hide plt">
+                <ul>
                     <li><img class="big" src="images/skin/24.jpg"></li>
                     <li><img src="images/skin/25.jpg"></li>
                     <li><img src="images/skin/26.jpg"></li>
@@ -88,7 +88,7 @@
                     <li><img class="last" src="images/skin/35.jpg"></li>
                 </ul>
                 <!--景色图片-->
-                <ul class="hide plt">
+                <ul>
                     <li><img class="big" src="images/skin/36.jpg"></li>
                     <li><img src="images/skin/37.jpg"></li>
                     <li><img src="images/skin/38.jpg"></li>
@@ -103,7 +103,7 @@
                     <li><img class="last" src="images/skin/47.jpg"></li>
                 </ul>
                 <!--情侣图片-->
-                <ul class="hide plt">
+                <ul>
                     <li><img class="big" src="images/skin/48.jpg"></li>
                     <li><img src="images/skin/49.jpg"></li>
                     <li><img src="images/skin/50.jpg"></li>
@@ -118,7 +118,7 @@
                     <li><img class="last" src="images/skin/59.jpg"></li>
                 </ul>
                 <!--自定义-->
-                <ul class="hide plt">
+                <ul>
                     <li id="ftpImg" class="clear_fix">
                         <!--上传区域-->
                         <div class="top_ftpArea fl tc">
@@ -149,7 +149,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="top_bg_yl fr" id="bg_yl"><img src="images/skin/yl.png" /></div>
+            <div class="top_bg_yl fr" id="previewArea"><img src="images/skin/yl.png" /></div>
         </div>
         <!--图片盒子结束-->
     </div>
