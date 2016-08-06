@@ -1,12 +1,13 @@
 /**
+ * Created by user on 2016/8/6.
+ */
+/**
  * Created by user on 2016/8/4.
  */
 //换肤
 window.onload = function(){
     var a = new ChangeSkin();
     a.init();
-    var b = new LoginReg();
-    b.init();
 
 }
 
@@ -21,6 +22,7 @@ function ChangeSkin(tag,selector){
     this.selBox = tool.$id('#selectBox'); //图片盒子列表
     this.aUl = tool.$tag('ul',this.selBox); //每组图片列表
     this.previewArea = tool.$id('#previewArea'); //换肤预览区域
+    //this.previewImg = tool.$tag('img',this.previewArea)[0]; //换肤预览图
     this.themeImg = tool.$id('#themeImg'); //桌面大背景
 
     this.upFileBtn = tool.$id('#upFileBtn'); //上传图片按钮
@@ -31,14 +33,7 @@ function ChangeSkin(tag,selector){
     this.uploadArea = tool.$id('#uploadArea'); //上传图片区域
     this.oImg = null; //用于保存即将创建的img标签
     this.userImgBtn = tool.$id('#userImgBtn'); //点击使用上传的图片作为桌面主题背景
-    this.cancelImgBtn = tool.$id('#cancelImgBtn'); //点击取消使用上传的图片作为主题背景
-    this.aP = tool.$tag('p',this.uploadInfo); //获得所有的上传信息p标签
-
-    this.onOff = true; //用于控制点击上传按钮时多次触发上传事件
-    this.onOffSkin = false; //用于控制doucment是否执行点击关闭皮肤盒子
 }
-
-//登录和注册
 ChangeSkin.prototype = {
     constructor: ChangeSkin, //还原constructor
     init: function(){ //初始化
@@ -46,7 +41,7 @@ ChangeSkin.prototype = {
         this.slideUpSkin();
         this.selectorSkin();
         this.uploadSkin();
-        this.Preview();
+        this.preview();
         this.addSkin();
     },
     slideDownSkin: function(){// 展开皮肤盒子
@@ -66,10 +61,16 @@ ChangeSkin.prototype = {
                     fx: 'linear'
                 }
             })
-            This.onOffSkin = true; //开启皮肤盒子
         }
-        This.isBackground(); //判断右边预览区是否有背景
-
+        if(localStorage.getItem('upImg')){
+            var str = localStorage.getItem('upImg');
+            This.previewArea.style.background = 'url('+str+')';
+        }else if(tool.getCookie('bg')){//如果之前有过存储就加载
+            var str = tool.getCookie('bg').substring(14);
+            This.previewArea.style.background = 'url(images/skin/'+ str +')';
+        }else{
+            This.previewArea.style.background = '';
+        }
         this.skinBox.onclick = function(ev){//阻止冒泡，防止打开的时候操作换肤界面，导致document点击事件触发
             var ev = ev || event;
             tool.stopBubble(ev);
@@ -77,7 +78,7 @@ ChangeSkin.prototype = {
     },
     slideUpSkin: function(){ //收起皮肤盒子
         var This = this;
-        this.sqBtn.onclick = function(ev){
+        this.sqBtn.onclick = function(){
             move(This.skinBox,{
                 'height': {
                     target: 0,
@@ -92,9 +93,7 @@ ChangeSkin.prototype = {
             })
         }
         document.onclick = function(){ //点击document收缩皮肤盒子
-            if(This.onOffSkin){
-                This.sqBtn.onclick();
-            }
+            This.sqBtn.onclick();
         }
     },
     selectorSkin: function(){//选择对应的皮肤选项
@@ -120,11 +119,11 @@ ChangeSkin.prototype = {
     },
     uploadSkin: function(){
         var This = this;
+        var aP = tool.$tag('p',this.uploadInfo); //获得所有的上传信息p标签
         this.upFileBtn.onclick = function(){ //触发表单click事件
             This.upInput.click();
         }
         this.upInput.onchange = function(){ //监控上传状态
-            This.onOff = true; //每次重新上传的时候就重置下开关状态
             This.file = this.files[0]; //获取上传的文件信息
             console.log(This.file)
             if(This.file && This.file.type.indexOf('image') == -1){ //判断上传的是不是图片类型
@@ -138,8 +137,8 @@ ChangeSkin.prototype = {
             This.uploadNotes.style.display = 'none';
             This.uploadInfo.style.display = 'block';
 
-            This.aP[0].innerHTML += ': ' + This.file.name; //图片名称
-            This.aP[1].innerHTML += ': ' + (This.file.size / 1024).toFixed(2) + 'k'; //图片大小 tofixed(2)数字保留两位小数
+            aP[0].innerHTML += ': ' + This.file.name; //图片名称
+            aP[1].innerHTML += ': ' + (This.file.size / 1024).toFixed(2) + 'k'; //图片大小 tofixed(2)数字保留两位小数
 
             readFile(This.file); //读取文件 供js使用
         }
@@ -151,23 +150,18 @@ ChangeSkin.prototype = {
                     This.oImg = document.createElement('img');
                 }
                 This.oImg.src = ev.target.result; //读取base64位图片地址
-                This.aP[2].innerHTML += ': ' + This.oImg.width+ '*' +This.oImg.height;
+                aP[2].innerHTML += ': ' + This.oImg.width+ '*' +This.oImg.height;
                 This.uploadArea.appendChild(This.oImg);
-                This.oImg = tool.$tag('img',This.uploadArea)[0];
-                This.previewArea.style.background = 'url('+This.oImg.src+')';
 
-                This.useNoSkin(); //是否使用上传的图片做为主题背景
+                watch(This.oImg);
 
             }
             fr.readAsDataURL(obj); //将上传的图片读入内存中，并读取到的图片编码为DataURL
+
         }
-        tool.bindEvent(This.userImgBtn,'click',function(){ //绑定uploadImg事件
-            if(This.onOff){
-                uploadImg();
-                This.onOff = false; //改变开关状态
-            }
-        });
-        function uploadImg(){ //上传图片
+        tool.bindEvent(This.userImgBtn,'click',uploadImg)
+        function uploadImg(){
+            alert(2);
             var xhr = null; //创建ajax对象
 
             try{ //兼容至IE7及其以上标准浏览器 html5后重新改写
@@ -176,28 +170,41 @@ ChangeSkin.prototype = {
                 xhr = new ActiveXObject('Microsoft.XMLHTTP');
             }
             xhr.open('post','./php/post_file.php',true); //设置请求信息
-            // xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded'); //设置请求头
+            xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded'); //设置请求头
             xhr.upload.onprogress = function(ev) {//监测上传进度
                 console.log('上传成功');
             }
             var fd = new FormData(); //构建提交表单的二进制数据对象
             fd.append('file',This.file); //构建二进制数据
             xhr.send(fd); //发送构建的二进制数据
+
+        }
+        function watch(obj){
+            This.oImg = tool.$tag('img',This.uploadArea)[0];
+            This.oImg.onmouseover = function(ev){
+                var ev = ev || event;
+                This.previewArea.style.background = 'url('+this.src+')';
+            }
+            This.oImg.onmouseout = function(ev){
+                var ev = ev || event;
+                if(localStorage.getItem('upImg')){//如果之前有localStorage就给图片地址付给它
+                    var str = localStorage.getItem('upImg');
+                    This.previewArea.style.background = 'url('+str+')'
+                }else if(tool.getCookie('bg')){ ////如果之前有cookie就给图片地址付给它
+                    var str = tool.getCookie('bg').substring(14); //获取图片 去除路径
+                    This.previewArea.style.background = 'url(images/skin/'+ str +')'
+                }else{
+                    This.previewArea.style.background = '';
+                }
+            }
+            This.userImgBtn.onclick = function(){
+                This.themeImg.src = This.oImg.src;
+                localStorage.setItem('upImg','php/uploads/' + This.file.name);
+                tool.removeCookie('bg');
+            }
         }
     },
-    useNoSkin: function(){//上传时的右边预览图片及其按钮操作
-        var This = this;
-        this.userImgBtn.onclick = function(){//使用上传的图片作为桌面主题
-            This.themeImg.src = This.oImg.src;
-            localStorage.setItem('upImg','php/uploads/' + This.file.name);
-            tool.removeCookie('bg');
-        }
-        this.cancelImgBtn.onclick = function(){//不适用上传的图片作为桌面主题
-            This.sqBtn.onclick();//关闭皮肤盒子
-            This.isBackground(); //判断右边预览区是否有背景
-        }
-    },
-    Preview: function(){//预览皮肤
+    preview: function(){//预览皮肤
         var This = this;
         for(var i=0;i<this.aUl.length;i++){
             watchBg(this.aUl[i]);
@@ -209,7 +216,16 @@ ChangeSkin.prototype = {
                     This.previewArea.style.background = 'url('+this.src+')';
                 }
                 aImg[i].onmouseout = function(){
-                    This.isBackground(); //判断右边预览区是否有背景
+                    if(localStorage.getItem('upImg')){
+                        var str = localStorage.getItem('upImg'); //获取图片 去除路径
+                        This.previewArea.style.background = 'url('+str+')'
+
+                    }else if(tool.getCookie('bg')){
+                        var str = tool.getCookie('bg').substring(14); //获取图片 去除路径
+                        This.previewArea.style.background = 'url(images/skin/'+ str +')';
+                    }else{
+                        This.previewArea.style.background = '';
+                    }
                 }
                 aImg[i].onclick = function(){ //点击时候换肤的是大图
                     //images/skin/53.jpg
@@ -219,19 +235,6 @@ ChangeSkin.prototype = {
                     localStorage.removeItem('upImg'); //如果不是使用上传的图片作为桌面主题，那么删除存储
                 }
             }
-        }
-    },
-    isBackground: function(){ //判断右边预览区是否有背景
-        var This = this;
-        if(localStorage.getItem('upImg')){
-            var str = localStorage.getItem('upImg'); //获取图片 去除路径
-            This.previewArea.style.background = 'url('+str+')'
-
-        }else if(tool.getCookie('bg')){
-            var str = tool.getCookie('bg').substring(14); //获取图片 去除路径
-            This.previewArea.style.background = 'url(images/skin/'+ str +')';
-        }else{
-            This.previewArea.style.background = '';
         }
     },
     addSkin: function(){//添加皮肤
@@ -246,111 +249,3 @@ ChangeSkin.prototype = {
 
 }
 
-function LoginReg(){
-    this.topBtnList = tool.$id('#topBtnList'); //获得顶部按钮列表
-    this.loginBtn = tool.$tag('a',this.topBtnList)[1]; //获取顶部登录按钮
-    this.closeLoginBtn = tool.$id('#closeLoginBtn'); //关闭登录界面按钮
-    this.loginPlate = tool.$id('#loginPlate'); //登录板块
-    this.loginUserName = tool.$id('#loginUserName'); //登录用户名
-    this.loginUserNameMsg = tool.$id('#loginUserNameMsg'); //登录用户名提示信息
-    this.loginUser = tool.$id('#loginUser'); //包裹登录界面用户输入框的盒子
-
-    this.left = 0; //登录界面的left值
-    this.top = 0; //界面的top值
-    //this.loginPlate.offsetWidth = 400;
-    //this.loginPlate.offsetHeight = 350;
-
-}
-LoginReg.prototype = {
-    constructor: LoginReg, //还原constructor
-    init: function(){
-        this.slideDownLogin();
-        this.slideUpLogin();
-        this.setFocus();
-    },
-    slideDownLogin: function(){ //打开登录面板
-        var This = this;
-        this.loginBtn.onclick = function(){
-            tool.$removeClass(This.loginPlate,'hide'); //显示登录面板
-            topPopup.slideDown(This.loginPlate); //打开面板方法
-            This.loginUserName.focus(); //打开登录面板的时候就设置用户名为当前焦点
-            tool.$addClass(This.loginUser,'inputColor'); //添加模拟的焦点输入框颜色
-            This.loginUserNameMsg.innerHTML = ''; //清除用户名的提示文字
-        }
-    },
-    slideUpLogin: function(){ //关闭控制面板
-        var This = this;
-        this.closeLoginBtn.onclick = function(){
-            topPopup.slideUp(This.loginPlate);
-        }
-    },
-    setFocus: function(){
-        var This = this;
-        this.loginUserName.onblur = function(){ //失去焦点的时候获取输入的内容
-            console.log(this.value);
-            This.loginUserNameMsg.innerHTML = '手机号/电话/邮箱';
-        }
-        this.loginUser.onclick = function(){
-            This.loginUserName.focus();
-            This.loginUserNameMsg.innerHTML = '';
-        }
-    }
-
-}
-
-var topPopup = (function(){ //顶部弹窗
-
-    var _left = 0; //登录界面的left值
-    var _top = 0; //登录界面的top值
-    function slideDown(obj){ //打开弹窗
-        //console.log(  tool.viewW(),tool.viewH())
-        //console.log(This.loginPlate.offsetWidth,This.loginPlate.offsetHeight )
-        _left = Math.round(tool.viewW() -obj.offsetWidth)/2;
-        _top = Math.round(tool.viewH() - obj.offsetHeight)/2;
-        obj.style.left = _left+ 'px';
-        move(obj,{
-            'opacity': {
-                target: 100,
-                duration: 1000,
-                fx: 'bounceOut'
-            },
-            'top': {
-                target: _top,
-                duration: 1000,
-                fx: 'bounceOut'
-            },
-            'height': {
-                target: 350,
-                duration: 300,
-                fx: 'linear'
-            }
-        })
-    };
-    function slideUp(obj){ //收起弹窗
-        move(obj,{
-            'opacity': {
-                target: 0,
-                duration: 1000,
-                fx: 'bounceOut'
-            },
-            'top': {
-                target: 0,
-                duration: 1000,
-                fx: 'bounceOut'
-            },
-            'height': {
-                target: 0,
-                duration: 300,
-                fx: 'linear'
-            }
-        },function(){
-            obj.style.left = 0;
-            obj.style.height = '350px';
-        })
-
-    };
-    return {
-        slideDown: slideDown,
-        slideUp : slideUp
-    }
-})()

@@ -116,6 +116,13 @@ body {
 .bdd{
     border: 1px solid #ddd;
 }
+/* 焦点颜色状态 */
+.inputColor{
+    border-color: #08c;
+    box-shadow: 0 0 4px #8bd6fb;
+}
+
+
 /*单行文字溢出虚点显示  后续处理看是否需要*/
 .ell{
     overflow: hidden;
@@ -368,7 +375,7 @@ body {
 }
 
 .msg {
-    left: 60px;
+    left: 5px;
     top: 0;
     color: #a9a9a9;
 }
@@ -413,27 +420,36 @@ body {
     position: relative;
     padding: 30px 40px;
 }
+.top_login_user,
+.top_login_password,
+.top_old_password_wrap,
+.top_new_password_wrap,
+.top_login_user_name,
+.top_login_user_password,
+.top_old_password,
+.top_new_password{
+    width: 300px;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #c7c7c7;
+    padding-left: 5px;
+}
 
 .top_login_user,
 .top_login_password,
 .top_old_password_wrap,
 .top_new_password_wrap {
-    width: 300px;
-    height: 40px;
     margin-bottom: 30px;
-    line-height: 40px;
+
 }
 
-.top_login_user_name,
-.top_login_user_password,
-.top_old_password,
-.top_new_password {
-    width: 240px;
-    height: 30px;
-    padding-left: 5px;
-    border: 1px solid #c7c7c7;
-    line-height: 30px;
-}
+/*.top_login_user_name,*/
+/*.top_login_user_password,*/
+/*.top_old_password,*/
+/*.top_new_password {*/
+    /*left: 0;*/
+    /*top: 0;*/
+/*}*/
 
 .top_rember_status {
     height: 15px;

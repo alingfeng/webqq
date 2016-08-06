@@ -18,9 +18,9 @@
     <div class="top_btn_box abs plt">
         <div class="top_btn_list abs" id="topBtnList">
             <a href="javascript:;">换肤</a><span>|</span>
-            <a class="dd bb" href="javascript:;">登陆</a><span>|</span>
+            <a href="javascript:;">登陆</a><span>|</span>
             <a href="javascript:;">注册</a><span>|</span>
-            <a class="dd nn" href="javascript:;">天气</a>
+            <a href="javascript:;">天气</a>
         </div>
     </div>
     <!--顶部功能区按钮结束-->
@@ -119,31 +119,31 @@
                 </ul>
                 <!--自定义-->
                 <ul>
-                    <li id="ftpImg" class="clear_fix">
+                    <li class="clear_fix">
                         <!--上传区域-->
-                        <div class="top_ftpArea fl tc">
+                        <div class="top_ftpArea fl tc" id="uploadArea">
 
                         </div>
                         <!--上传操作-->
                         <div class="top_ftpAction fr">
                             <div class="top_fileInput">
                                 <div id="upFileBtn" class="top_upFileBtn poi cf ovh tc">上传图片</div>
-                                <input type="file" name="upImg" id="upImg" class="hide"/>
+                                <input type="file" name="upInput" id="upInput" class="hide"/>
                             </div>
                             <!--上传须知-->
-                            <div class="top_upload_notes" id="demand_info">
+                            <div class="top_upload_notes" id="uploadNotes">
                                 <p>上传须知</p>
                                 <p>图片大小：≤200k</p>
                                 <p>图片尺寸：≥1024*768</p>
                             </div>
-                            <div class="top_upload_detail hide" id="ftp_info">
+                            <div class="top_upload_detail hide" id="uploadInfo">
                                 <p>图片名称</p>
                                 <p>图片大小</p>
                                 <p>图片尺寸</p>
                             </div>
                             <div id="btn_box" class="top_confirm_btn">
-                                <input value="确定" type="button" class="top_useImg poi cf bdd"/>
-                                <input value = "取消" type="button" class="top_noImg poi bgff cf bdd"/>
+                                <input value="确定" type="button" class="top_useImg poi cf bdd" id="userImgBtn"/>
+                                <input value = "取消" type="button" class="top_noImg poi bgff cf bdd" id="cancelImgBtn"/>
                             </div>
                         </div>
                     </li>
@@ -155,20 +155,20 @@
     </div>
     <!--皮肤盒子结束-->
     <!--登录界面开始-->
-    <div style="display: none;" class="top_login abs ovh hide plt" id="login">
+    <div class="top_login abs ovh hide plt" id="loginPlate">
         <div id="login_top" class="top_login_title rel">
-            <a href="javascript:;" class="close_btn abs poi"></a>
+            <a id="closeLoginBtn" href="javascript:;" class="close_btn abs poi"></a>
         </div>
         <div class="top_login_panel">
             <form class="top_login_form" method="post" action="#">
-                <div class="top_login_user rel">
-                    <span class="ts fl">用户名</span>
-                    <input class="top_login_user_name fr" id="user" type="text"/>
-                    <span class="msg abs">手机号/电话/邮箱</span>
+                <div id="loginUser" class="top_login_user rel">
+                    <!--<span class="ts fl">用户名</span>-->
+                    <input class="top_login_user_name abs plt" id="loginUserName" type="text"/>
+                    <span id="loginUserNameMsg" class="msg abs">手机号/电话/邮箱</span>
                 </div>
                 <div class="top_login_password rel">
-                    <span class="ts2 fl">密码</span>
-                    <input class="top_login_user_password fr" id="pas" type="password"/>
+                    <!--<span class="ts2 fl">密码</span>-->
+                    <input class="top_login_user_password abs plt" id="pas" type="password"/>
                     <span class="msg abs">密码</span>
                 </div>
                 <p class="top_rember_status"><label><input id="remember" type="checkbox">记住我的密码</label></p>

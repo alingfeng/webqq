@@ -32,10 +32,15 @@ var tool = (function(){
                 var classes = elem.className.split(' ');
                 for(var i=0;i<classes.length;i++){
                     if(classes[i] === className){
-                        elem.className += ' '+ className;
-                    }else{
-                        elem.className = className;
+                        return;
                     }
+                }
+                console.log(elem.className)
+                if(!elem.className){
+                    elem.className = className;
+                }else{
+
+                    elem.className += ' '+className;
                 }
 
             },
@@ -96,7 +101,7 @@ var tool = (function(){
             },
             bindEvent: function(obj,eventType,fn){ //绑定事件
                 if(obj.addEventListener){//标注下
-                    obj.attachEvent(eventType,fn,false)
+                    obj.addEventListener(eventType,fn,false)
                 }else{
                     obj.attachEvent('on'+eventType,function(){ //IE下
                         fn.call(obj);
@@ -111,6 +116,12 @@ var tool = (function(){
                         fn.call(obj);
                     })
                 }
+            },
+            viewW: function(){ //获取可视区的宽度
+                return document.documentElement.clientWidth;
+            },
+            viewH: function(){//获取可视区的高度
+                return document.documentElement.clientHeight;
             }
         }
         return toolCollect;

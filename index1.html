@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>webQQ</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script type="text/javascript" src="js/tools.js"></script>
+    <script type="text/javascript" src="js/move.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+</head>
+<body>
+<!--皮肤区域开始-->
+<div class="theme_box abs ovh plt">
+    <img class="abs ovh" id="themeImg" src="images/theme/t1.jpg">
+</div>
+<!--皮肤区域结束-->
+<!--顶部功能区按钮开始-->
+<div class="top_btn_box abs plt">
+    <div class="top_btn_list abs" id="topBtnList">
+        <a href="javascript:;">换肤</a><span>|</span>
+        <a href="javascript:;">登陆</a><span>|</span>
+        <a href="javascript:;">注册</a><span>|</span>
+        <a href="javascript:;">天气</a>
+    </div>
+</div>
+<!--顶部功能区按钮结束-->
+<!--皮肤盒子结束-->
+<div class="top_skin_box abs bgff opa0 ovh plt" id="skinBox">
+    <div class="top_menu_box">
+        <ul class="top_menu_list" id="skinSelect">
+            <li class="top_current"><a href="javascript:;">卡通</a></li>
+            <li><a href="javascript:;">明星</a></li>
+            <li><a href="javascript:;">简约</a></li>
+            <li><a href="javascript:;">风景</a></li>
+            <li><a href="javascript:;">情侣</a></li>
+            <li><a href="javascript:;">自定义</a></li>
+        </ul>
+        <a id="sqBtn" class="top_skin_sq" href="javascript:;">收起</a>
+    </div>
+    <!--分割线-->
+    <div class="top_line"></div>
+    <!--图片盒子开始-->
+    <div class="top_img_box clear_fix">
+        <div class="top_select_pic fl" id="selectBox">
+            <!--卡通图片-->
+            <ul class="show plt">
+                <li><img class="big poi" src="images/skin/0.jpg"></li>
+                <li><img src="images/skin/1.jpg"></li>
+                <li><img src="images/skin/2.jpg"></li>
+                <li><img src="images/skin/3.jpg"></li>
+                <li><img src="images/skin/4.jpg"></li>
+                <li><img src="images/skin/5.jpg"></li>
+                <li><img class="big" src="images/skin/6.jpg"></li>
+                <li><img src="images/skin/7.jpg"></li>
+                <li><img src="images/skin/8.jpg"></li>
+                <li><img class="last" src="images/skin/9.jpg"></li>
+                <li><img class="last" src="images/skin/10.jpg"></li>
+                <li><img class="last" src="images/skin/11.jpg"></li>
+            </ul>
+            <!--明星图片-->
+            <ul>
+                <li><img class="big" src="images/skin/12.jpg"></li>
+                <li><img src="images/skin/13.jpg"></li>
+                <li><img src="images/skin/14.jpg"></li>
+                <li><img src="images/skin/15.jpg"></li>
+                <li><img src="images/skin/16.jpg"></li>
+                <li><img src="images/skin/17.jpg"></li>
+                <li><img class="big" src="images/skin/18.jpg"></li>
+                <li><img src="images/skin/19.jpg"></li>
+                <li><img src="images/skin/20.jpg"></li>
+                <li><img class="last" src="images/skin/21.jpg"></li>
+                <li><img class="last" src="images/skin/22.jpg"></li>
+                <li><img class="last" src="images/skin/23.jpg"></li>
+            </ul>
+            <!--简约图片-->
+            <ul>
+                <li><img class="big" src="images/skin/24.jpg"></li>
+                <li><img src="images/skin/25.jpg"></li>
+                <li><img src="images/skin/26.jpg"></li>
+                <li><img src="images/skin/27.jpg"></li>
+                <li><img src="images/skin/28.jpg"></li>
+                <li><img src="images/skin/29.jpg"></li>
+                <li><img class="big" src="images/skin/30.jpg"></li>
+                <li><img src="images/skin/31.jpg"></li>
+                <li><img src="images/skin/32.jpg"></li>
+                <li><img class="last" src="images/skin/33.jpg"></li>
+                <li><img class="last" src="images/skin/34.jpg"></li>
+                <li><img class="last" src="images/skin/35.jpg"></li>
+            </ul>
+            <!--景色图片-->
+            <ul>
+                <li><img class="big" src="images/skin/36.jpg"></li>
+                <li><img src="images/skin/37.jpg"></li>
+                <li><img src="images/skin/38.jpg"></li>
+                <li><img src="images/skin/39.jpg"></li>
+                <li><img src="images/skin/40.jpg"></li>
+                <li><img src="images/skin/41.jpg"></li>
+                <li><img class="big" src="images/skin/42.jpg"></li>
+                <li><img src="images/skin/43.jpg"></li>
+                <li><img src="images/skin/44.jpg"></li>
+                <li><img class="last" src="images/skin/45.jpg"></li>
+                <li><img class="last" src="images/skin/46.jpg"></li>
+                <li><img class="last" src="images/skin/47.jpg"></li>
+            </ul>
+            <!--情侣图片-->
+            <ul>
+                <li><img class="big" src="images/skin/48.jpg"></li>
+                <li><img src="images/skin/49.jpg"></li>
+                <li><img src="images/skin/50.jpg"></li>
+                <li><img src="images/skin/51.jpg"></li>
+                <li><img src="images/skin/52.jpg"></li>
+                <li><img src="images/skin/53.jpg"></li>
+                <li><img class="big" src="images/skin/54.jpg"></li>
+                <li><img src="images/skin/55.jpg"></li>
+                <li><img src="images/skin/56.jpg"></li>
+                <li><img class="last" src="images/skin/57.jpg"></li>
+                <li><img class="last" src="images/skin/58.jpg"></li>
+                <li><img class="last" src="images/skin/59.jpg"></li>
+            </ul>
+            <!--自定义-->
+            <ul>
+                <li class="clear_fix">
+                    <!--上传区域-->
+                    <div class="top_ftpArea fl tc" id="uploadArea">
+
+                    </div>
+                    <!--上传操作-->
+                    <div class="top_ftpAction fr">
+                        <div class="top_fileInput">
+                            <div id="upFileBtn" class="top_upFileBtn poi cf ovh tc">上传图片</div>
+                            <input type="file" name="upInput" id="upInput" class="hide"/>
+                        </div>
+                        <!--上传须知-->
+                        <div class="top_upload_notes" id="uploadNotes">
+                            <p>上传须知</p>
+                            <p>图片大小：≤200k</p>
+                            <p>图片尺寸：≥1024*768</p>
+                        </div>
+                        <div class="top_upload_detail hide" id="uploadInfo">
+                            <p>图片名称</p>
+                            <p>图片大小</p>
+                            <p>图片尺寸</p>
+                        </div>
+                        <div id="btn_box" class="top_confirm_btn">
+                            <input value="确定" type="button" class="top_useImg poi cf bdd" id="userImgBtn"/>
+                            <input value = "取消" type="button" class="top_noImg poi bgff cf bdd" id="cancelImgBtn"/>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="top_bg_yl fr" id="previewArea"><img src="images/skin/yl.png" /></div>
+    </div>
+    <!--图片盒子结束-->
+</div>
+<!--皮肤盒子结束-->
+<!--登录界面开始-->
+<div class="top_login abs ovh hide plt" id="loginPlate">
+    <div id="login_top" class="top_login_title rel">
+        <a id="closeLoginBtn" href="javascript:;" class="close_btn abs poi"></a>
+    </div>
+    <div class="top_login_panel">
+        <form class="top_login_form" method="post" action="#">
+            <div id="loginUser" class="top_login_user rel">
+                <!--<span class="ts fl">用户名</span>-->
+                <input class="top_login_user_name abs plt" id="loginUserName" type="text"/>
+                <span id="loginUserNameMsg" class="msg abs">手机号/电话/邮箱</span>
+            </div>
+            <div class="top_login_password rel">
+                <!--<span class="ts2 fl">密码</span>-->
+                <input class="top_login_user_password abs plt" id="pas" type="password"/>
+                <span class="msg abs">密码</span>
+            </div>
+            <p class="top_rember_status"><label><input id="remember" type="checkbox">记住我的密码</label></p>
+            <a class="top_reg_btn" href="javascript:;">注册</a>
+            <input class="top_log_btn poi cf" id="log" type="button" value="登陆"/>
+        </form>
+    </div>
+</div>
+<!--登录界面结束-->
+<!--注册界面-->
+<div style="display: none;" class="top_reg abs ovh hide plt">
+    <div id="land_title" class="top_reg_title">
+        <a href="javascript:;" class="close_btn abs"></a>
+    </div>
+    <form class="top_reg_panel" id="land"  method="post">
+        <div class="top_reg_user">
+            <span class="ts fl">&nbsp;用户名</span>
+            <input class="top_reg_user_name fl" id="username" type="text" name="username"/>
+            <span class="msg ts_left abs">请输入您的手机号</span>
+        </div>
+        <div class="top_reg_password">
+            <span class="ts fl">&nbsp;&nbsp;密码</span>
+            <input class="top_reg_user_password" type="password" id="password" name="password"/>
+            <span class="msg ts_left abs">密码为6-12个字符区分大小写</span>
+        </div>
+        <div class="top_confirm_password">
+            <span class="ts fl">确认密码</span>
+            <input class="top_reg_confirm_password" type="password" id="password1" name="password1"/>
+            <span class="msg ts_left abs">请再次输入密码</span>
+        </div>
+        <div class="top_reg_sex">
+            <span class="ts fl">性别</span>
+            <input  type="radio" name="sex" value="男" id="man" checked="checked"/>
+            <label for="man">男</label>
+            <input  type="radio" name="sex" value="女" id="woman"/>
+            <label for="woman">女</label>
+        </div>
+        <input class="top_reg_sub_btn poi cf" value="马上注册" id="register" type="button" name="register">
+    </form>
+</div>
+<!--登陆状态-->
+<div class="top_login_status abs hide" id="land_status">
+    <div class="top_login_img">
+        <img id="land_pic" src="images/gn/man.png" alt="男">
+    </div>
+    <span class="top_login_online"><a class="cf" href="javascript:;">用户在线中</a></span>
+    <div class="top_login_select ovh hide" id="select">
+        <ul class="top_login_list">
+            <li><a href="javascript:;">修改密码</a></li>
+            <li><a href="javascript:;">注销</a></li>
+        </ul>
+    </div>
+    <div class="arrow hide">
+        <img class="poi" id="jiantou" src="images/gn/arrow.png">
+    </div>
+</div>
+<!--修改密码界面-->
+<div style="display: none;" class="top_change_password abs ovh hide plt" id="change_password">
+    <div id="change_top" class="top_change_password_title"></div>
+    <div class="top_change_password_panel">
+        <form method="post" action="#">
+            <div class="top_old_password_wrap">
+                <span class="ts ts_margin fl">原密码</span>
+                <input class="top_old_password" id="ori_pas" type="password" value=""/>
+            </div>
+            <div class="top_new_password_wrap">
+                <span class="ts ts_margin fl">新密码</span>
+                <input class="top_new_password" id="new_pas" type="password" value=""/>
+            </div>
+            <div class="top_sure_btn">
+                <input class="top_change_btn poi cf" id="yes" type="button" value="确定"/>
+                <input class="top_not_change_btn poi cf" id="no" type="button" value="取消"/>
+            </div>
+        </form>
+    </div>
+</div>
+<!--天气预报-->
+<div class="top_weather abs opa0 hide bdd" id="weather">
+    <a class="close_btn abs cf" id="close" href="javascript:;" ></a>
+    <dl class="top_curWeaher_info">
+        <dd  class="top_weather_title cf" id="weather_title"><h2 id="curCity"></h2></dd>
+        <dd class="top_weather_tips cf" id="tips">气象提示:<span id="curTips"></span></dd>
+        <dd class="top_weather_temp cf" id="wd">温度:<span id="curTemperature"></span></dd>
+    </dl>
+    <div  class="top_weather_details" id="con">
+        <dl class="top_weather_today ovh">
+            <dd>
+                <h2>今天</h2>
+            </dd>
+            <dd class="top_air_temp cf">气温:<span id="T_temperature"></span></dd>
+            <dd class="top_weaher_img cf" id="T_weather_img">
+                <img src="" title="" alt=""/>
+            </dd>
+        </dl>
+        <dl class="top_weather_tomorrow ovh">
+            <dd>
+                <h2>今天</h2>
+            </dd>
+            <dd class="top_air_temp cf ovh">气温:<span id="M_temperature"></span></dd>
+            <dd class="top_weaher_img" cf id="M_weather_img">
+                <img src="" title="" alt=""/>
+            </dd>
+        </dl>
+        <dl class="top_weather_after_tomorrow ovh">
+            <dd>
+                <h2>今天</h2>
+            </dd>
+            <dd class="top_air_temp cf">气温:<span id="A_temperature"></span></dd>
+            <dd class="top_weaher_img" id="A_weather_img">
+                <img src="" title="" alt=""/>
+            </dd>
+        </dl>
+    </div>
+    <a class="top_change_city_btn cf" href="javascript:;">切换</a>
+    <div class="top_weather_assistant abs bgff hide plt" id="sjld">
+        <h2 class="top_weather_assistant_title cf">桌面天气小助手</h2>
+        <a href="javascript:;" class="close_btn cf" id="closeW"></a>
+        <div class="top_weather_prov_box">
+            <span class="ts cf">请选择城市</span>
+            <div class="top_select_list fl poi" id="shengfen">
+                <p class="top_select_item cf">选择省份</p>
+                <div class="top_select_options abs hide">
+                    <ul></ul>
+                </div>
+            </div>
+            <div class="top_select_list fl poi" id="chengshi">
+                <p class="top_select_item cf">选择城市</p>
+                <div class="top_select_options abs hide">
+                    <ul></ul>
+                </div>
+            </div>
+            <div class="top_select_list fl poi" id="quyu">
+                <p class="top_select_item cf">选择区域</p>
+                <div class="top_select_options abs hide">
+                    <ul></ul>
+                </div>
+            </div>
+        </div>
+        <div class="top_save_btn bgff" id="b_btn">
+            <input class="poi cf tc bdd" type="button" value="保存"/>
+            <input class="poi cf tc bdd" type="button" value="取消"/>
+        </div>
+    </div>
+</div>
+<!--左侧菜单栏-->
+<div class="left_app abs" id="web_main_menu">
+    <ul class="left_app_menu" id="web_t_menu">
+        <li>
+            <a href="javascript:;">
+                <img src="images/page/left1.png" alt="应用市场"/>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <img src="images/page/left2.png" alt="我的网盘"/>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <img src="images/page/left3.png" alt="qq"/>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <img src="images/page/left4.png" alt="qq空间"/>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <img src="images/page/left5.png" alt="qq邮箱"/>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <img src="images/page/left6.png" alt="腾讯微博"/>
+            </a>
+        </li>
+    </ul>
+    <ul class="left_fun_btn" id="web_b_menu">
+        <li><a class="left_fun_1" href="javascript:;"></a></li>
+        <li><a class="left_fun_2" href="javascript:;"></a></li>
+        <li><a class="left_fun_3" href="javascript:;"></a></li>
+        <li><a class="left_fun_4" href="javascript:;"></a></li>
+        <li><a class="left_fun_5" href="javascript:;"></a></li>
+    </ul>
+</div>
+<!--桌面app图标-->
+<div class="desk_app abs" id="web_icon">
+    <div class="desk_app_box" id="desk_tag">
+        <ul class="desk_app_list abs opa1 hide tc plt">
+            <li>
+                <a href="javascript:;">
+                    <img class="file_icon" src="images/page/1.png" alt="网络硬盘"/>
+                    <i class="file_name cf">
+                        <input class="file_title cf tc" type="text" value="网络硬盘"/>
+                    </i>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img class="file_icon" src="images/page/2.png" alt="搜搜地图"/>
+                    <i class="file_name cf">
+                        <input class="file_title cf tc" type="text" value="搜搜地图"/>
+                    </i>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img class="file_icon" src="images/page/3.png" alt="浏览网页"/>
+                    <i class="file_name cf">
+                        <input class="file_title cf tc" class="" type="text" value="浏览网页"/>
+                    </i>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img class="file_icon" src="images/page/10.png" alt="qq阅读"/>
+                    <i class="file_name cf">
+                        <input class="file_title cf tc" type="text" value="qq阅读"/>
+                    </i>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img class="file_icon" src="images/page/23.png" alt="好友管理"/>
+                    <i class="file_name cf">
+                        <input class="file_title cf tc" type="text" value="好友管理"/>
+                    </i>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img class="file_icon" src="images/page/27.png" alt="说明"/>
+                    <i class="file_name cf">
+                        <input class="file_title cf tc" type="text" value="说明"/>
+                    </i>
+                </a>
+            </li>
+        </ul>
+        <ul class="desk_app_list abs opa1 hide tc plt">
+            <li>
+                <a href="javascript:;">
+                    <img class="file_icon" src="images/page/4.png" alt="豆瓣FM"/>
+                    <i class="file_name">
+                        <input class="file_title" type="text" value="豆瓣FM"/>
+                    </i>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img class="file_icon" src="images/page/5.png" alt="起点中文"/>
+                    <i class="file_name">
+                        <input class="file_title" type="text" value="起点中文"/>
+                    </i>
+                </a>
+            </li>
+            <li  class="icon_3">
+                <a href="javascript:;">
+                    <img class="file_icon" src="images/page/9.png" alt="快递查询"/>
+                    <i class="file_name">
+                        <input class="file_title" type="text" value="快递查询"/>
+                    </i>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img class="file_icon" src="images/page/11.png" alt="阅览天下"/>
+                    <i class="file_name">
+                        <input class="file_title" type="text" value="阅览天下"/>
+                    </i>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img class="file_icon" src="images/page/13.png" alt="乐视网"/>
+                    <i class="file_name">
+                        <input class="file_title" type="text" value="乐视网"/>
+                    </i>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img class="file_icon" src="images/page/14.png" alt="芒果旅游"/>
+                    <i class="file_name">
+                        <input class="file_title" type="text" value="芒果旅游"/>
+                    </i>
+                </a>
+            </li>
+        </ul>
+        <ul class="desk_app_list abs opa1 hide tc plt">
+            <li>
+                <a href="javascript:;">
+                    <img class="file_icon" src="images/page/15.png" alt="qq阅读"/>
+                    <i class="file_name">
+                        <input class="file_title" type="text" value="qq阅读"/>
+                    </i>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img class="file_icon" src="images/page/17.png" alt="腾讯视频"/>
+                    <i class="file_name">
+                        <input class="file_title" type="text" value="腾讯视频"/>
+                    </i>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img class="file_icon" src="images/page/18.png" alt="乐视网"/>
+                    <i class="file_name">
+                        <input class="file_title" type="text" value="乐视网"/>
+                    </i>
+                </a>
+            </li>
+        </ul>
+        <ul class="desk_app_list abs opa1 hide tc plt">
+            <li>
+                <a href="javascript:;">
+                    <img class="file_icon" src="images/page/19.png" alt="朋友网"/>
+                    <i class="file_name">
+                        <input class="file_title" type="text" value="朋友网"/>
+                    </i>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img class="file_icon" src="images/page/20.png" alt="3366"/>
+                    <i class="file_name">
+                        <input class="file_title" type="text" value="3366"/>
+                    </i>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img class="file_icon" src="images/page/21.png" alt="欢乐斗地主"/>
+                    <i class="file_name">
+                        <input type="text" value="欢乐斗地主"/>
+                    </i>
+                </a>
+            </li>
+        </ul>
+        <ul class="desk_app_list abs opa1 hide tc plt">
+            <li>
+                <a href="javascript:;">
+                    <img class="file_icon" src="images/page/22.png" alt="qq宝贝"/>
+                    <i>
+                        <input type="text" value="qq宝贝"/>
+                    </i>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img class="file_icon" src="images/page/24.png" alt="开心交友"/>
+                    <i>
+                        <input type="text" value="开心交友"/>
+                    </i>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img class="file_icon" src="images/page/25.png" alt="开开"/>
+                    <i>
+                        <input type="text" value="开开"/>
+                    </i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--桌面app菜单切换-->
+<div class="desk_app_top_menu abs" id="web_top_menu">
+    <a class="app_top_menu_icon abs" href="javascript:;">
+        <img src="images/page/user_img.jpg"/>
+    </a>
+    <ul class="app_top_menu_list fl ovh">
+        <li class="app_top_menu_active"><a href="javascript:;">1</a></li>
+        <li><a href="javascript:;">2</a></li>
+        <li><a href="javascript:;">3</a></li>
+        <li><a href="javascript:;">4</a></li>
+        <li><a href="javascript:;">5</a></li>
+    </ul>
+    <ol class="app_top_fun_btn ovh" id="web_top_right">
+        <li><a href="javascript:;" class="app_top_small_btn"></a></li>
+        <li><a href="javascript:;" class="app_top_search_btn"></a></li>
+    </ol>
+    <div class="app_top_fun_searchFile abs hide">
+        <input class="app_top_seacrh_input cf abs" type="text"/>
+        <span class="ts ts_color search_words abs">搜索应用</span>
+        <span class="search_btn"></span>
+    </div>
+</div>
+<!--桌面右键菜单-->
+<div class="right_menu_wrap rel" id="web_menu">
+    <ul class="right_menu_first_level abs hide" id ="right_menu">
+        <li>
+            <h2 class="menu_item">
+                查看
+                <span class="arrow_more abs"></span>
+            </h2>
+            <ul class="right_menu_second_level abs hide">
+                <li><h2 class="menu_item">小图标</h2></li>
+                <li class="checked"><h2>中等图标</h2></li>
+                <li><h2 class="menu_item">大图标</h2></li>
+            </ul>
+        </li>
+        <li>
+            <h2 class="menu_item">
+                排序方式
+                <span class="arrow_more abs"></span>
+            </h2>
+            <ul class="right_menu_second_level abs hide">
+                <li><h2 class="menu_item">横向</h2></li>
+                <li class="checked"><h2 class="menu_item">纵向</h2></li>
+                <li><h2 class="menu_item">自由排列</h2></li>
+                <li><h2 class="menu_item">显示桌面小工具</h2></li>
+            </ul>
+        </li>
+        <li><h2 class="menu_item">刷新</h2></li>
+        <li><h2 class="menu_item">文件上传</h2></li>
+        <li><h2 class="menu_item">新建</h2></li>
+        <li><h2 class="menu_item">个性化设置</h2></li>
+        <li><h2 class="menu_item">便签</h2></li>
+        <li><h2 class="menu_item">注销</h2></li>
+    </ul>
+</div>
+<!--上传预览-->
+<div class="upload_wrap abs opa1 hide" id="ftp">
+    <h2 class="upload_area_title tc">上传预览</h2>
+    <a href="javascript:;" class="close_btn abs" id="closeFtp"></a>
+    <div class="upload_choice_img">
+        <div class="upload_choice_area rel cf tc">
+            <div class="upload_btn_wrap rel">
+                <div id="upButton" class="upload_btn poi cf ovh tc">上传图片</div>
+                <input class="hide"  multiple="multiple" size="30"  type="file" name="upfile" id="upfile"/>
+            </div>
+        </div>
+    </div>
+    <span class="upload_drag_area bgff tc" id="fileDragArea">或者将文件拖到此处</span>
+    <!--图片、文件放置区域-->
+    <div class="drag_drop_area bgff ovh bdd" id="content_area"><ul></ul></div>
+    <!--进度条-->
+    <div class="upload_progress rel bgff bdd" id="pro_bar"></div>
+    <!--上传图片信息栏-->
+    <div class="upload_success_info bgff ovh bdd" id="imgInfo">
+        <span class="upload_finish"></span>
+    </div>
+    <input class="upload_start_btn cf tc" type="button" value="开始上传" id="upload">
+</div>
+<!--个性化主题设置-->
+<div class="theme_area abs poi opa1 ovh hide" id="skin">
+    <div class="popup_title_wrap abs" id="title" >
+        <h2 class="popup_title poi tc">主题设置</h2>
+        <!--关闭窗口按钮-->
+        <div class="popup_control">
+            <a class="close_btn_img abs poi" href="javascript:;"></a>
+        </div>
+    </div>
+    <div class="theme_pics bgff" id="skin_content">
+        <ul class="theme_list clear_fix" id="skin_img">
+            <li>
+                <img class="theme_img" src="images/theme/t1.jpg" alt="" />
+                <p class="theme_name">温馨木纹</p>
+            </li>
+            <li>
+                <img class="theme_img" src="images/theme/t2.jpg" alt="" />
+                <p class="theme_name">中秋节</p>
+            </li>
+            <li>
+                <img class="theme_img"  src="images/theme/t3.jpg" alt="" />
+                <p class="theme_name">七夕</p>
+            </li>
+            <li>
+                <img class="theme_img" src="images/theme/t4.jpg" alt="" />
+                <p class="theme_name">幻彩蓝天</p>
+            </li>
+            <li>
+                <img class="theme_img" src="images/theme/t5.jpg" alt="" />
+                <p class="theme_name">晴空行云</p>
+            </li>
+            <li>
+                <img class="theme_img" src="images/theme/t6.jpg" alt="" />
+                <p class="theme_name">水墨年华</p>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--桌面便签-->
+<div class="notepad abs opa1 hide plt" id="notepad">
+    <h2 class="notepad_title rel tc" id="note_title">我的便签</h2>
+    <a href="javascript:;" class="close_btn close_btn_pos abs" id="closeNote"></a>
+    <ul class="notepad_list" id="list"></ul>
+    <div class="notepad_con abs cf hide plt" id="content">
+        <div class="notepad_btn_wrap rel">
+            <a class="notepad_del_btn fl cf" id="del" href="javascript:;">删除</a>
+            <a class="notepad_save_btn fr cf" id="save" href="javascript:;">保存</a>
+        </div>
+        <textarea class="notepad_input_area" id="textarea"></textarea>
+    </div>
+    <a class="notepad_add_btn abs" id="add" href="javascript:;"></a>
+</div>
+<!--弹出窗口  动态生成-->
+<div class="popup abs hide opa1 ovh" id="win_mask">
+    <div class="popup_title_wrap">
+        <h2 class="popup_title">快递查询</h2>
+        <!--控制窗口变化按钮-->
+        <div class=" popup_control popup_ctrl_btn_wrap">
+            <a class="popup_min_btn" href="javascript:;"></a>
+            <a class="popup_max_btn" href="javascript:;"></a>
+            <a class="popup_close_btn" href="javascript:;"></a>
+        </div>
+    </div>
+    <div class="popop_content bgff">
+        <div class="popup_con_cover abs hide plt" id="con_cover" ></div>
+        <iframe class="popup_site_con" src="">
+
+        </iframe>
+    </div>
+</div>
+<!--桌面底部最小化菜单展示  动态生成-->
+<ul class="fold_menu_wrap abs" id="min_menu_bg">
+    <!--<li>-->
+    <!--<div class="fold_menu_title_wrap rel">-->
+    <!--<div class="fold_menu_run abs plt">-->
+    <!--<h2 class="fold_menu_title">网络硬盘</h2>-->
+    <!--<a class="bg" href="javascript:;"></a>-->
+    <!--<a class="popop_close_btn" href="javascript:;"></a>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</li>-->
+</ul>
+<!--桌面时钟-->
+<div class="clock_wrap abs" id="mask">
+    <canvas id="clock" width="380" height="320">您的浏览器不支持canvas标签</canvas>
+</div>
+</body>
+</html>
