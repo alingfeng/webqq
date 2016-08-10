@@ -35,14 +35,11 @@ var tool = (function(){
                         return;
                     }
                 }
-                console.log(elem.className)
                 if(!elem.className){
                     elem.className = className;
                 }else{
-
                     elem.className += ' '+className;
                 }
-
             },
             $removeClass: function(elem,className){// 某个元素 要移除的class
                 if(className){
@@ -115,6 +112,11 @@ var tool = (function(){
                     obj.detachEvent('on'+eventType,function(){
                         fn.call(obj);
                     })
+                }
+            },
+            extend: function(obj1,obj2){ //拷贝继承
+                for(var attr in obj2){
+                    obj1[attr] = obj2[attr];
                 }
             },
             viewW: function(){ //获取可视区的宽度

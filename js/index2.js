@@ -1,44 +1,15 @@
 /**
+ * Created by user on 2016/8/10.
+ */
+/**
  * Created by user on 2016/8/4.
  */
 //换肤
 window.onload = function(){
     var a = new ChangeSkin();
     a.init();
-    var b = new LoginRegPlate({
-        topBtnList: tool.$id('#topBtnList'), //获得顶部按钮列表
-        loginRegBtn: tool.$tag('a',this.topBtnList)[1], //获得登录按钮
-        closeBtn: tool.$id('#closeLoginBtn'), //登录界面关闭按钮
-        plate: tool.$id('#loginPlate'), //登录板块
-        user: tool.$id('#loginUser'), //包裹登录界面用户输入框的盒子
-        pas: tool.$id('#loginPas'), //包裹登录界面密码框的盒子
-        userName: tool.$id('#loginUserName'), //登录用户名框
-        userPas: tool.$id('#loginUserPas'), //登录密码框
-        userNameMsg: tool.$id('#loginUserNameMsg'), //登录用户名提示信息
-        userPasMsg: tool.$id('#loginUserPasMsg'), //登录密码提示信息
-        height: '350' //登录面板的高度
-
-    });
+    var b = new LoginRegPlate();
     b.init();
-
-    var c = new LoginRegPlate({
-        topBtnList: tool.$id('#topBtnList'), //获得顶部按钮列表
-        loginRegBtn: tool.$tag('a',this.topBtnList)[2], //获得顶部注册按钮
-        closeBtn: tool.$id('#closeRegBtn'), //注册界面关闭按钮
-        plate: tool.$id('#regPlate'), //注册板块
-        user: tool.$id('#regUser'), //包裹注册界面用户输入框的盒子
-        pas: tool.$id('#regPas'), //包裹注册界面密码框的盒子
-        regCfmdPas: tool.$id('#regCfmdPas'), //包裹注册界面确认密码框的盒子
-        userName: tool.$id('#regUserName'), //注册用户名框
-        userPas: tool.$id('#regUserPas'), //注册密码框
-        userNameMsg: tool.$id('#regUserNameMsg'), //注册用户名提示信息
-        userPasMsg: tool.$id('#regUserPasMsg'), //注册密码提示信息
-        regCfmdPasMsg: tool.$id('#regCfmdPasMsg'), //确认注册密码提示信息
-        regCfmdUserPas: tool.$id('#regCfmdUserPas'), //确认注册密码
-        //regSex: tool.$id('#regSex'), //注册时性别
-        height: '420' //注册面板的高度
-    });
-    c.init();
 
 }
 
@@ -294,24 +265,18 @@ function LoginRegPlate(opt){
     //
     //
     // }
-    this.topBtnList = opt.topBtnList;
-    this.loginRegBtn = opt.loginRegBtn;
-    this.closeBtn = opt.closeBtn;
-    this.plate = opt.plate;
-    this.userName = opt.userName;
-    this.userNameMsg = opt.userNameMsg;
-    this.userPasMsg = opt.userPasMsg;
-    this.user = opt.user;
-    this.userPas = opt.userPas;
-    this.pas = opt.pas;
-    this.regCfmdPas = opt.regCfmdPas;
-    this.regCfmdPasMsg = opt.regCfmdPasMsg;
-    this.regCfmdUserPas = opt.regCfmdUserPas;
-    this.height = opt.height;
+    this.topBtnList = tool.$id('#topBtnList'); //获得顶部按钮列表
+    this.loginRegBtn = tool.$tag('a',this.topBtnList)[1]; //获取顶部登录按钮
+    this.closeLoginBtn = tool.$id('#closeLoginBtn'); //关闭登录界面按钮
+    this.Plate = tool.$id('#loginPlate'); //登录板块
+    this.userName = tool.$id('#loginUserName'); //登录用户名框
+    this.userNameMsg = tool.$id('#loginUserNameMsg'); //登录用户名提示信息
+    this.userPasMsg = tool.$id('#loginUserPasMsg'); //登录密码提示信息
+    this.user = tool.$id('#loginUser'); //包裹登录界面用户输入框的盒子
+    this.userPas = tool.$id('#loginUserPas'); //登录密码框
+    this.Pas = tool.$id('#loginPas'); //包裹登录界面密码框的盒子
 
-    this.innerUser = ''; //获取用户名提示信息
-    this.innerMsg = ''; //获取密码提示信息
-    this.innerCfmdMsg = ''; //获取确认密码提示信息
+    this.regPhone = /^1[3|4|5|8][0-9]\d{8}$/; //匹配手机号
 }
 LoginRegPlate.prototype = {
     constructor: LoginRegPlate, //还原constructor
@@ -322,98 +287,71 @@ LoginRegPlate.prototype = {
     },
     slideDownLogin: function(){ //打开登录面板
         var This = this;
-        this.loginRegBtn.onclick = function(){
-            tool.$removeClass(This.plate,'hide'); //显示登录面板
-            new OpenStyle().slideDown(This.plate,This.height); //打开面板
-            This.getFocusStatus(This.userName,This.user,This.userNameMsg); //设置获得焦点的时的状态
+        this.loginBtn.onclick = function(){
+            tool.$removeClass(This.loginPlate,'hide'); //显示登录面板
+            new OpenStyle().slideDown(This.loginPlate); //打开面板
+            This.getFocusStatus(This.loginUserName,This.loginUser,This.loginUserNameMsg); //设置获得焦点的时的状态
         }
     },
     slideUpLogin: function(){ //关闭控制面板
         var This = this;
-        this.closeBtn.onclick = function(){
-            new OpenStyle().slideUp(This.plate,This.height); //关闭面板
+        this.closeLoginBtn.onclick = function(){
+            new OpenStyle().slideUp(This.loginPlate); //关闭面板
         }
     },
     setFocus: function(){ //设置焦点
         var This = this;
-
-        this.userName.onblur = function(){ //失去用户名输入框焦点
-            This.loseFocusStatus(This.userName,This.user,This.userNameMsg,This.innerMsg);
+        this.loginUserName.onblur = function(){ //失去用户名输入框焦点
+            This.loseFocusStatus(This.loginUserName,This.loginUser,This.loginUserNameMsg);
         }
-        this.user.onclick = function(){//获得用户名输入框焦点
-            This.innerMsg = This.userNameMsg.innerHTML;
-            This.getFocusStatus(This.userName,This.user,This.userNameMsg);
+        this.loginUser.onclick = function(){//获得用户名输入框焦点
+            This.getFocusStatus(This.loginUserName,This.loginUser,This.loginUserNameMsg);
         }
-        this.userPas.onblur = function(){ //失去焦点的时候获取输入的内容
-            This.loseFocusStatus(This.userPas,This.pas,This.userPasMsg,This.innerUser);
+        this.loginUserPas.onblur = function(){ //失去焦点的时候获取输入的内容
+            This.loseFocusStatus(This.loginUserPas,This.loginUserPas,This.loginUserPasMsg);
         }
-        this.pas.onclick = function(){
-            This.innerUser = This.userPasMsg.innerHTML;
-            This.getFocusStatus(This.userPas,This.pas,This.userPasMsg)
-        }
-        if(this.regCfmdPas) {
-            var innerCon = ''; //获取提示信息 供赋值使用
-            this.regCfmdUserPas.onblur = function(){
-
-                This.loseFocusStatus(This.regCfmdUserPas,This.regCfmdPas,This.regCfmdPasMsg,This.innerCfmdMsg);
-            }
-            this.regCfmdPas.onclick = function(){
-                This.innerCfmdMsg = This.regCfmdPasMsg.innerHTML;
-                This.getFocusStatus(This.regCfmdUserPas,This.regCfmdPas,This.regCfmdPasMsg);
-            }
+        this.loginPas.onclick = function(){
+            This.getFocusStatus(This.loginUserPas,This.loginUserPas,This.loginUserPasMsg)
         }
     },
-    loseFocusStatus: function(obj1,obj2,obj3,msg){ //失去焦点时样式处理
+    loseFocusStatus: function(obj1,obj2,obj3){ //失去焦点时样式处理
         console.log(obj1.value);
         var userName = obj1.value;
-        //this.checkUserName(userName);
-        new CheckRegLogin().checkRegUserName(userName);
-        if(obj1.value == ''){
-            obj1.value = ''; //置空value值
-            obj3.innerHTML = msg;
-        }
-
+        this.checkUserName(userName);
+        obj1.value = ''; //置空value值
         tool.$removeClass(obj2,'inputColor'); //移除模拟的焦点输入框颜色
-
+        obj3.innerHTML = '手机号';
     },
     getFocusStatus: function(obj1,obj2,obj3){ //获得焦点时样式处理
         obj1.focus();
         tool.$addClass(obj2,'inputColor'); //添加模拟的焦点输入框颜色
-        console.log(obj1.value)
         obj3.innerHTML = '';
-    }
+    }//,
+    // checkUserName: function(userName){
+    //     if(userName && this.regPhone.test(userName)){
+    //         console.log('匹配成功');
+    //     }
+    //
+    // }
+
+
 }
 
-function CheckRegLogin(){ //检测注册和登录方法
-    this.successMsg = tool.$id('#successMsg'); //验证成功时的提示
-    this.errorMsg = tool.$id('#errorMsg'); //验证失败是的提示
-
-    this.regPhone = /^1[3|4|5|8][0-9]\d{8}$/; //匹配手机号
+function CheckRegLogin(){ //监测注册和登录方法
+    LoginRegPlate.call(this); //属性集成
 }
 
- CheckRegLogin.prototype = {
-     constructor: CheckRegLogin,
-     checkRegUserName: function(userName){
-         var This = this;
-         if(userName && this.regPhone.test(userName)){
-             console.log('匹配成功');
-             console.log(This.successMsg)
-             tool.$removeClass(This.successMsg,'hide'); //添加模拟的焦点输入框颜色
-         }else{
-             tool.$removeClass(This.errorMsg,'hide'); //添加模拟的焦点输入框颜色
-         }
 
-     }
- }
-
-
+tool.extend(CheckRegLogin.prototype,LoginRegPlate.prototype); //方法继承
+var a = new CheckRegLogin();
+console.log( a.closeLoginBtn);
 function OpenStyle() {//顶部弹出窗口打开样式
     this.left = 0;
     this.top = 0;
 }
 OpenStyle.prototype = {
     constructor: OpenStyle,
-    slideDown: function (obj,height){ //打开弹窗
+    slideDown: function (obj){ //打开弹窗
         var This = this;
         this.left = Math.round(tool.viewW() -obj.offsetWidth)/2;
         this.top = Math.round(tool.viewH() - obj.offsetHeight)/2;
@@ -421,31 +359,31 @@ OpenStyle.prototype = {
         move(obj,{
             'opacity': {
                 target: 100,
-                duration: 800,
+                duration: 1000,
                 fx: 'bounceOut'
             },
             'top': {
                 target: This.top,
-                duration: 800,
+                duration: 1000,
                 fx: 'bounceOut'
             },
             'height': {
-                target: height,
+                target: 350,
                 duration: 300,
                 fx: 'linear'
             }
         })
     },
-    slideUp: function(obj,height){ //收起弹窗
+    slideUp: function(obj){ //收起弹窗
         move(obj,{
             'opacity': {
                 target: 0,
-                duration: 800,
+                duration: 1000,
                 fx: 'bounceOut'
             },
             'top': {
                 target: 0,
-                duration: 800,
+                duration: 1000,
                 fx: 'bounceOut'
             },
             'height': {
@@ -455,7 +393,7 @@ OpenStyle.prototype = {
             }
         },function(){
             obj.style.left = 0;
-            obj.style.height = height + 'px';
+            obj.style.height = '350px';
         })
 
     }

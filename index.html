@@ -164,12 +164,12 @@
                 <div id="loginUser" class="top_login_user rel">
                     <!--<span class="ts fl">用户名</span>-->
                     <input class="top_login_user_name abs plt" id="loginUserName" type="text"/>
-                    <span id="loginUserNameMsg" class="msg abs">手机号/电话/邮箱</span>
+                    <span id="loginUserNameMsg" class="msg abs">手机号</span>
                 </div>
-                <div class="top_login_password rel">
+                <div id="loginPas" class="top_login_password rel">
                     <!--<span class="ts2 fl">密码</span>-->
-                    <input class="top_login_user_password abs plt" id="pas" type="password"/>
-                    <span class="msg abs">密码</span>
+                    <input class="top_login_user_password abs plt" id="loginUserPas" type="password"/>
+                    <span id="loginUserPasMsg" class="msg abs">密码</span>
                 </div>
                 <p class="top_rember_status"><label><input id="remember" type="checkbox">记住我的密码</label></p>
                 <a class="top_reg_btn" href="javascript:;">注册</a>
@@ -179,27 +179,32 @@
     </div>
     <!--登录界面结束-->
     <!--注册界面-->
-    <div style="display: none;" class="top_reg abs ovh hide plt">
+    <div class="top_reg abs ovh plt" id="regPlate">
         <div id="land_title" class="top_reg_title">
-            <a href="javascript:;" class="close_btn abs"></a>
+            <a id="closeRegBtn" href="javascript:;" class="close_btn abs"></a>
         </div>
         <form class="top_reg_panel" id="land"  method="post">
-            <div class="top_reg_user">
-                <span class="ts fl">&nbsp;用户名</span>
-                <input class="top_reg_user_name fl" id="username" type="text" name="username"/>
-                <span class="msg ts_left abs">请输入您的手机号</span>
+            <div class="top_reg_user" id="regUser">
+                <!--<span class="ts fl">&nbsp;用户名</span>-->
+                <input class="top_reg_user_name fl" id="regUserName" type="text" name="username"/>
+                <span class="msg ts_pos abs" id="regUserNameMsg">请输入您的手机号</span>
+                <span class="login_success_msg abs hide" id="successMsg"></span>
+                <div class="login_error abs hide" id="errorMsg">
+                    <i class="error_icon abs"></i>
+                    <span class="error_msg">手机号格式不正确</span>
+                </div>
             </div>
-            <div class="top_reg_password">
-                <span class="ts fl">&nbsp;&nbsp;密码</span>
-                <input class="top_reg_user_password" type="password" id="password" name="password"/>
-                <span class="msg ts_left abs">密码为6-12个字符区分大小写</span>
+            <div class="top_reg_password" id="regPas">
+                <!--<span class="ts fl">&nbsp;&nbsp;密码</span>-->
+                <input class="top_reg_user_password" type="password" id="regUserPas" name="password"/>
+                <span class="msg ts_pos abs" id="regUserPasMsg">密码为6-12个字符区分大小写</span>
             </div>
-            <div class="top_confirm_password">
-                <span class="ts fl">确认密码</span>
-                <input class="top_reg_confirm_password" type="password" id="password1" name="password1"/>
-                <span class="msg ts_left abs">请再次输入密码</span>
+            <div class="top_confirm_password" id="regCfmdPas">
+                <!--<span class="ts fl">确认密码</span>-->
+                <input class="top_reg_confirm_password" type="password" id="regCfmdUserPas" name="password1"/>
+                <span class="msg ts_left abs" id="regCfmdPasMsg">请再次输入密码</span>
             </div>
-            <div class="top_reg_sex">
+            <div class="top_reg_sex" id="regSex">
                 <span class="ts fl">性别</span>
                 <input  type="radio" name="sex" value="男" id="man" checked="checked"/>
                 <label for="man">男</label>
