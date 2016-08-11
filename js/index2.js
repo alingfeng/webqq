@@ -1,49 +1,15 @@
 /**
+ * Created by user on 2016/8/10.
+ */
+/**
  * Created by user on 2016/8/4.
  */
 //换肤
 window.onload = function(){
     var a = new ChangeSkin();
     a.init();
-    var b = new LoginRegPlate({
-        topBtnList: tool.$id('#topBtnList'), //获得顶部按钮列表
-        loginRegBtn: tool.$tag('a',this.topBtnList)[1], //获得登录按钮
-        closeBtn: tool.$id('#closeLoginBtn'), //登录界面关闭按钮
-        plate: tool.$id('#loginPlate'), //登录板块
-        user: tool.$id('#loginUser'), //包裹登录界面用户输入框的盒子
-        pas: tool.$id('#loginPas'), //包裹登录界面密码框的盒子
-        userName: tool.$id('#loginUserName'), //登录用户名框
-        userPas: tool.$id('#loginUserPas'), //登录密码框
-        userNameMsg: tool.$id('#loginUserNameMsg'), //登录用户名提示信息
-        userPasMsg: tool.$id('#loginUserPasMsg'), //登录密码提示信息
-        height: '350' //登录面板的高度
-
-    });
+    var b = new LoginRegPlate();
     b.init();
-
-    var c = new LoginRegPlate({
-        topBtnList: tool.$id('#topBtnList'), //获得顶部按钮列表
-        loginRegBtn: tool.$tag('a',this.topBtnList)[2], //获得顶部注册按钮
-        closeBtn: tool.$id('#closeRegBtn'), //注册界面关闭按钮
-        plate: tool.$id('#regPlate'), //注册板块
-        user: tool.$id('#regUser'), //包裹注册界面用户输入框的盒子
-        pas: tool.$id('#regPas'), //包裹注册界面密码框的盒子
-        regCfmdPas: tool.$id('#regCfmdPas'), //包裹注册界面确认密码框的盒子
-        userName: tool.$id('#regUserName'), //注册用户名框
-        userPas: tool.$id('#regUserPas'), //注册密码框
-        userNameMsg: tool.$id('#regUserNameMsg'), //注册用户名提示信息
-        userPasMsg: tool.$id('#regUserPasMsg'), //注册密码提示信息
-        regCfmdPasMsg: tool.$id('#regCfmdPasMsg'), //确认注册密码提示信息
-        regCfmdUserPas: tool.$id('#regCfmdUserPas'), //确认注册密码
-        innerUser : '请输入您的手机号',//获取用户名提示信息
-        innerMsg : '密码为6-12个数字、字母或数字和字符组合', //获取密码提示信息
-        innerCfmdMsg : '请再次输入密码', //获取确认密码提示信息
-        height: '420' //注册面板的高度
-    });
-    c.init();
-
-    var d = new CheckRegLogin();
-    d.init();
 
 }
 
@@ -299,260 +265,93 @@ function LoginRegPlate(opt){
     //
     //
     // }
-    this.topBtnList = opt.topBtnList;
-    this.loginRegBtn = opt.loginRegBtn;
-    this.closeBtn = opt.closeBtn;
-    this.plate = opt.plate;
-    this.userName = opt.userName;
-    this.userNameMsg = opt.userNameMsg;
-    this.userPasMsg = opt.userPasMsg;
-    this.user = opt.user;
-    this.userPas = opt.userPas;
-    this.pas = opt.pas;
-    this.regCfmdPas = opt.regCfmdPas;
-    this.regCfmdPasMsg = opt.regCfmdPasMsg;
-    this.regCfmdUserPas = opt.regCfmdUserPas;
-    this.height = opt.height;
+    this.topBtnList = tool.$id('#topBtnList'); //获得顶部按钮列表
+    this.loginRegBtn = tool.$tag('a',this.topBtnList)[1]; //获取顶部登录按钮
+    this.closeLoginBtn = tool.$id('#closeLoginBtn'); //关闭登录界面按钮
+    this.Plate = tool.$id('#loginPlate'); //登录板块
+    this.userName = tool.$id('#loginUserName'); //登录用户名框
+    this.userNameMsg = tool.$id('#loginUserNameMsg'); //登录用户名提示信息
+    this.userPasMsg = tool.$id('#loginUserPasMsg'); //登录密码提示信息
+    this.user = tool.$id('#loginUser'); //包裹登录界面用户输入框的盒子
+    this.userPas = tool.$id('#loginUserPas'); //登录密码框
+    this.Pas = tool.$id('#loginPas'); //包裹登录界面密码框的盒子
 
-    this.innerUser = opt.innerUser; //获取用户名提示信息
-    this.innerMsg = opt.innerMsg ; //获取密码提示信息
-    this.innerCfmdMsg = opt.innerCfmdMsg; //获取确认密码提示信息
-
-    this.regUserNameSuccessMsg = tool.$id('#regUserNameSuccessMsg'); //验证用户名成功时的提示
-    this.regUserNameError = tool.$id('#regUserNameError'); //验证用户名失败是的提示
-    this.regUserNameErrorMsg = tool.$tag('span',this.regUserNameError); //验证用户名失败提示文字
-    this.regUserNameErrorIcon = tool.$tag('i',this.regUserNameError)[0]; //验证用户名失败图标
-
-    this.regUserPasSuccessMsg = tool.$id('#regUserPasSuccessMsg'); //验证密码成功时的提示
-    this.regUserPasError = tool.$id('#regUserPasError'); //验证密码失败是的提示
-    this.regUserPasErrorMsg = tool.$tag('span',this.regUserPasError); //验证密码失败提示文字
-    this.regUserPasErrorIcon = tool.$tag('i',this.regUserPasError)[0]; //验证密码失败图标
-
-    this.regUserPasCfimSuccessMsg = tool.$id('#regUserPasCfimSuccessMsg'); //验证确认密码成功时的提示
-    this.regUserPasCfimError = tool.$id('#regUserPasCfimError'); //验证确认密码失败是的提示
-    this.regUserPasCfimErrorMsg = tool.$tag('span',this.regUserPasCfimError); //验证确认密码失败提示文字
-    this.regUserPasCfimErrorIcon = tool.$tag('i',this.regUserPasCfimError)[0]; //验证确认密码失败图标
-
-
+    this.regPhone = /^1[3|4|5|8][0-9]\d{8}$/; //匹配手机号
 }
 LoginRegPlate.prototype = {
     constructor: LoginRegPlate, //还原constructor
     init: function(){
         this.slideDownLogin();
         this.slideUpLogin();
-        this.setFocusStyle();
-        this.watchInput();
+        this.setFocus();
     },
     slideDownLogin: function(){ //打开登录面板
         var This = this;
-        this.loginRegBtn.onclick = function(){
-            tool.$removeClass(This.plate,'hide'); //显示登录面板
-            new OpenStyle().slideDown(This.plate,This.height); //打开面板
-            This.getFocusStatus(This.userName,This.user,This.userNameMsg); //设置获得焦点的时的状态
+        this.loginBtn.onclick = function(){
+            tool.$removeClass(This.loginPlate,'hide'); //显示登录面板
+            new OpenStyle().slideDown(This.loginPlate); //打开面板
+            This.getFocusStatus(This.loginUserName,This.loginUser,This.loginUserNameMsg); //设置获得焦点的时的状态
         }
     },
     slideUpLogin: function(){ //关闭控制面板
         var This = this;
-        this.closeBtn.onclick = function(){
-            new OpenStyle().slideUp(This.plate,This.height); //关闭面板
+        this.closeLoginBtn.onclick = function(){
+            new OpenStyle().slideUp(This.loginPlate); //关闭面板
         }
     },
-    setFocusStyle: function(){ //设置焦点
+    setFocus: function(){ //设置焦点
         var This = this;
-
-        this.userName.onblur = function(){ //失去用户名输入框焦点
-
-            This.loseFocusStatus(This.userName,This.user,This.userNameMsg,This.innerUser);
+        this.loginUserName.onblur = function(){ //失去用户名输入框焦点
+            This.loseFocusStatus(This.loginUserName,This.loginUser,This.loginUserNameMsg);
         }
-        this.user.onclick = function(){//获得用户名输入框焦点
-            This.getFocusStatus(This.userName,This.user,This.userNameMsg);
+        this.loginUser.onclick = function(){//获得用户名输入框焦点
+            This.getFocusStatus(This.loginUserName,This.loginUser,This.loginUserNameMsg);
         }
-        this.userPas.onblur = function(){ //失去焦点的时候获取输入的内容
-            This.loseFocusStatus(This.userPas,This.pas,This.userPasMsg,This.innerMsg);
-            var regUserPas = This.userPas.value;
-            new CheckRegLogin().checkRegUserPas(regUserPas);
+        this.loginUserPas.onblur = function(){ //失去焦点的时候获取输入的内容
+            This.loseFocusStatus(This.loginUserPas,This.loginUserPas,This.loginUserPasMsg);
         }
-        this.pas.onclick = function(){ //获得密码输入框焦点
-            This.getFocusStatus(This.userPas,This.pas,This.userPasMsg)
-        }
-
-        if(this.regCfmdPas) { //再次确认密码
-            var innerCon = ''; //获取提示信息 供赋值使用
-            this.regCfmdUserPas.onblur = function(){
-                This.loseFocusStatus(This.regCfmdUserPas,This.regCfmdPas,This.regCfmdPasMsg,This.innerCfmdMsg);
-                var regUserCfimPas = This.regCfmdUserPas.value;
-                new CheckRegLogin().checkRegUserCfimPas(regUserCfimPas);
-            }
-            this.regCfmdPas.onclick = function(){
-                This.getFocusStatus(This.regCfmdUserPas,This.regCfmdPas,This.regCfmdPasMsg);
-            }
+        this.loginPas.onclick = function(){
+            This.getFocusStatus(This.loginUserPas,This.loginUserPas,This.loginUserPasMsg)
         }
     },
-    watchInput: function(){ //监听页面输入框内容
-        var This = this;
-        if(this.regCfmdPas) { //当有再次确认密码框的时候执行
-            tool.checkInput(this.regCfmdUserPas,checkCfmdPas); //监测确认密码输入
-            function checkCfmdPas(){ //确认密码输入函数
-                var regUserCfimPas = This.regCfmdUserPas.value;
-               // console.log(regUserCfimPas.length)
-                if(regUserCfimPas.length !== 0){ //当输入的数字小于11的时候，就移除错误时提示信息和图标
-
-                    tool.$addClass(This.regUserPasCfimSuccessMsg,'hide'); //验证成功时图标提示
-                    tool.$addClass(This.regUserPasCfimErrorMsg[0],'hide'); //移除错误信息
-                    tool.$addClass(This.regUserPasCfimErrorIcon,'hide'); //移除错误信息提示图标
-                }
-            }
-        }
-        tool.checkInput(this.userName,checkUserName); //监测用户名输入
-        tool.checkInput(this.userPas,checkUserPas); //监测密码输入
-
-        function checkUserName(){ //用户名输入函数
-            var regUserName = This.userName.value;
-            new CheckRegLogin().checkRegUserName(regUserName);
-            if(regUserName.length !== 11){//当输入的数字不等于11的时候，就移除成功时提示图标
-                tool.$addClass(This.regUserNameSuccessMsg,'hide'); //移除成功时图标提示
-                localStorage.removeItem('regUserName',regUserName); //移除存储注册用户名
-            }
-            if(regUserName.length < 11){ //当输入的数字小于11的时候，就移除错误时提示信息和图标
-                tool.$addClass(This.regUserNameErrorMsg[0],'hide'); //移除错误信息
-                tool.$addClass(This.regUserNameErrorIcon,'hide'); //移除错误信息提示图标
-            }
-        }
-        function checkUserPas(){ //监测密码输入函数
-             var regUserPas = This.userPas.value;
-
-            if(regUserPas.length !== 0){ //当输入的数字小于11的时候，就移除错误时提示信息和图标
-                console.log('监测');
-                tool.$addClass(This.regUserPasSuccessMsg,'hide'); //验证成功时图标提示
-                tool.$addClass(This.regUserPasErrorMsg[0],'hide'); //移除错误信息
-                tool.$addClass(This.regUserPasErrorIcon,'hide'); //移除错误信息提示图标
-                localStorage.removeItem('regPas',regUserPas); //移除注册时用户的密码
-            }
-        }
-    },
-    loseFocusStatus: function(obj1,obj2,obj3,msg){ //失去焦点时样式处理
-        if(!obj1.value){
-            obj1.value = ''; //置空value值
-            obj3.innerHTML = msg;
-        }
+    loseFocusStatus: function(obj1,obj2,obj3){ //失去焦点时样式处理
+        console.log(obj1.value);
+        var userName = obj1.value;
+        this.checkUserName(userName);
+        obj1.value = ''; //置空value值
         tool.$removeClass(obj2,'inputColor'); //移除模拟的焦点输入框颜色
-
+        obj3.innerHTML = '手机号';
     },
     getFocusStatus: function(obj1,obj2,obj3){ //获得焦点时样式处理
         obj1.focus();
         tool.$addClass(obj2,'inputColor'); //添加模拟的焦点输入框颜色
-        //console.log(obj1.value)
         obj3.innerHTML = '';
-    }
+    }//,
+    // checkUserName: function(userName){
+    //     if(userName && this.regPhone.test(userName)){
+    //         console.log('匹配成功');
+    //     }
+    //
+    // }
+
+
 }
 
-function CheckRegLogin(){ //检测注册和登录方法
-    this.regUserNameSuccessMsg = tool.$id('#regUserNameSuccessMsg'); //验证用户名成功时的提示
-    this.regUserNameError = tool.$id('#regUserNameError'); //验证用户名失败是的提示
-    this.regUserNameErrorMsg = tool.$tag('span',this.regUserNameError); //验证用户名失败提示文字
-    this.regUserNameErrorIcon = tool.$tag('i',this.regUserNameError)[0]; //验证用户名失败图标
-
-    this.regUserPasSuccessMsg = tool.$id('#regUserPasSuccessMsg'); //验证密码成功时的提示
-    this.regUserPasError = tool.$id('#regUserPasError'); //验证密码失败是的提示
-    this.regUserPasErrorMsg = tool.$tag('span',this.regUserPasError); //验证密码失败提示文字
-    this.regUserPasErrorIcon = tool.$tag('i',this.regUserPasError)[0]; //验证密码失败图标
-
-    this.regUserPasCfimSuccessMsg = tool.$id('#regUserPasCfimSuccessMsg'); //验证确认密码成功时的提示
-    this.regUserPasCfimError = tool.$id('#regUserPasCfimError'); //验证确认密码失败是的提示
-    this.regUserPasCfimErrorMsg = tool.$tag('span',this.regUserPasCfimError); //验证确认密码失败提示文字
-    this.regUserPasCfimErrorIcon = tool.$tag('i',this.regUserPasCfimError)[0]; //验证确认密码失败图标
-
-
-    this.regUserCfimPas = '' //存储确认的密码
-    this.regPhone = /^1[3|4|5|8][0-9]\d{8}$/; //匹配手机号
-    this.regPassword = /^\w{6,12}$/; //匹配密码
-    //this.onOff = 0; //用于判断是否注册通过
-
-    this.regSex = tool.$id('#regSex'), //注册时性别; //性别
-    this.regSexBtn = tool.$tag('input',this.regSex); //获取性别选项按钮
-    this.regBtn = tool.$id('#regBtn'); //点击注册按钮
+function CheckRegLogin(){ //监测注册和登录方法
+    LoginRegPlate.call(this); //属性集成
 }
 
- CheckRegLogin.prototype = {
-     constructor: CheckRegLogin,
-     init: function(){
-         this. chekRegSex();
-         this.submit();
-     },
-     checkRegUserName: function(regUserName){
-         console.log(regUserName)
-         var This = this;
-         if(regUserName && regUserName.length===11){//判断输入的用户名是否存在并满足11位
-             if(this.regPhone.test(regUserName)){
-                 console.log('匹配用户名成功');
-                 console.log(This.regUserNameSuccessMsg);
-                 tool.$removeClass(This.regUserNameSuccessMsg,'hide'); //验证成功时图标提示
-                 localStorage.setItem('regUserName',regUserName); //存储注册用户名
-             }else{
-                 tool.$removeClass(This.regUserNameErrorMsg[0],'hide'); //错误信息
-                 tool.$removeClass(This.regUserNameErrorIcon,'hide'); //错误信息提示图标
-             }
-         }
 
-     },
-     checkRegUserPas: function(regUserPas){
-         var This = this;
-         console.log(regUserPas);
-         if(!regUserPas) return false; //如果输入为空就不进行验证
-         if(regUserPas.length>=6 && regUserPas.length<=12){
-             if(this.regPassword.test(regUserPas)){
-                 console.log('匹配密码成功');
-                 tool.$removeClass(this.regUserPasSuccessMsg,'hide'); //验证成功时图标提示
-                 this.regUserPas = regUserPas; //存储密码
-                 localStorage.setItem('regPas',regUserPas); //存储注册密码
-             }
-         }else{
-             tool.$removeClass(this.regUserPasErrorMsg[0],'hide'); //错误信息
-             tool.$removeClass(this.regUserPasErrorIcon,'hide'); //错误信息提示图标
-         }
-     },
-     checkRegUserCfimPas: function(regUserCfimPas){ //再次确认密码
-         var This = this;
-         if(!regUserCfimPas) return false; //如果输入为空就不进行验证
-         if(regUserCfimPas === localStorage.getItem('regPas',regUserPas)){
-             console.log('匹配密码成功',this.regUserPasCfimSuccessMsg);
-             tool.$removeClass(this.regUserPasCfimSuccessMsg,'hide'); //验证成功时图标提示
-         }else{
-             tool.$removeClass(this.regUserPasCfimErrorMsg[0],'hide'); //错误信息
-             tool.$removeClass(this.regUserPasCfimErrorIcon,'hide'); //错误信息提示图标
-         }
-     },
-     chekRegSex: function(){
-         localStorage.setItem('regSex',this.regSexBtn[0].value); //默认性别存储第一个
-         for(var i=0;i<this.regSexBtn.length;i++){
-             this.regSexBtn[i].onclick = function(){
-                 if(this.checked == true){
-                     console.log(this.value);
-                     localStorage.setItem('regSex',this.value); //点击确定性别存储
-                 }
-             }
-         }
-     },
-     submit: function(){
-         var regUserName = localStorage.getItem('regUserName',regUserName);
-         var regUserPas = localStorage.getItem('regPas',regUserPas);
-         this.regBtn.onclick = function(){
-            // console.log('注册成功',regUserName,regUserPas)
-             if(regUserName && regUserPas){
-                 alert('恭喜你，注册成功');
-             }
-         }
-     }
- }
-
-
+tool.extend(CheckRegLogin.prototype,LoginRegPlate.prototype); //方法继承
+var a = new CheckRegLogin();
+console.log( a.closeLoginBtn);
 function OpenStyle() {//顶部弹出窗口打开样式
     this.left = 0;
     this.top = 0;
 }
 OpenStyle.prototype = {
     constructor: OpenStyle,
-    slideDown: function (obj,height){ //打开弹窗
+    slideDown: function (obj){ //打开弹窗
         var This = this;
         this.left = Math.round(tool.viewW() -obj.offsetWidth)/2;
         this.top = Math.round(tool.viewH() - obj.offsetHeight)/2;
@@ -560,31 +359,31 @@ OpenStyle.prototype = {
         move(obj,{
             'opacity': {
                 target: 100,
-                duration: 800,
+                duration: 1000,
                 fx: 'bounceOut'
             },
             'top': {
                 target: This.top,
-                duration: 800,
+                duration: 1000,
                 fx: 'bounceOut'
             },
             'height': {
-                target: height,
+                target: 350,
                 duration: 300,
                 fx: 'linear'
             }
         })
     },
-    slideUp: function(obj,height){ //收起弹窗
+    slideUp: function(obj){ //收起弹窗
         move(obj,{
             'opacity': {
                 target: 0,
-                duration: 800,
+                duration: 1000,
                 fx: 'bounceOut'
             },
             'top': {
                 target: 0,
-                duration: 800,
+                duration: 1000,
                 fx: 'bounceOut'
             },
             'height': {
@@ -594,7 +393,7 @@ OpenStyle.prototype = {
             }
         },function(){
             obj.style.left = 0;
-            obj.style.height = height + 'px';
+            obj.style.height = '350px';
         })
 
     }

@@ -32,12 +32,14 @@ var tool = (function(){
                 var classes = elem.className.split(' ');
                 for(var i=0;i<classes.length;i++){
                     if(classes[i] === className){
-                        elem.className += ' '+ className;
-                    }else{
-                        elem.className = className;
+                        return;
                     }
                 }
-
+                if(!elem.className){
+                    elem.className = className;
+                }else{
+                    elem.className += ' '+className;
+                }
             },
             $removeClass: function(elem,className){// 某个元素 要移除的class
                 if(className){
@@ -96,7 +98,7 @@ var tool = (function(){
             },
             bindEvent: function(obj,eventType,fn){ //绑定事件
                 if(obj.addEventListener){//标注下
-                    obj.attachEvent(eventType,fn,false)
+                    obj.addEventListener(eventType,fn,false)
                 }else{
                     obj.attachEvent('on'+eventType,function(){ //IE下
                         fn.call(obj);
@@ -111,6 +113,32 @@ var tool = (function(){
                         fn.call(obj);
                     })
                 }
+            },
+            extend: function(obj1,obj2){ //拷贝继承
+                for(var attr in obj2){
+                    obj1[attr] = obj2[attr];
+                }
+            },
+            checkBrowser: function(browserType){ //检查浏览器类型
+                var userAgent = navigator.userAgent; //获得用户浏览器信息
+                if(userAgent.indexOf(browserType) !== -1) {
+                    return true;
+                }
+            },
+            checkInput: function(obj,fn){ //实时监测用户输入
+                if(toolCollect.checkBrowser('MSIE')){ //IE9及其以下
+                    obj.attachEvent('onpropertychange',function(){
+                        fn.call(this);
+                    });
+                }else{// HTML5 IE9以上
+                    obj.addEventListener('input',fn,false)
+                }
+            },
+            viewW: function(){ //获取可视区的宽度
+                return document.documentElement.clientWidth;
+            },
+            viewH: function(){//获取可视区的高度
+                return document.documentElement.clientHeight;
             }
         }
         return toolCollect;

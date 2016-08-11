@@ -116,6 +116,8 @@ body {
 .bdd{
     border: 1px solid #ddd;
 }
+
+
 /*单行文字溢出虚点显示  后续处理看是否需要*/
 .ell{
     overflow: hidden;
@@ -368,7 +370,7 @@ body {
 }
 
 .msg {
-    left: 60px;
+    left: 5px;
     top: 0;
     color: #a9a9a9;
 }
@@ -379,9 +381,8 @@ body {
 }
 
 .top_login {
-    z -index: 21;
+    z-index: 21;
 }
-
 .top_login_title,
 .top_reg_title,
 .top_change_password_title {
@@ -413,27 +414,63 @@ body {
     position: relative;
     padding: 30px 40px;
 }
+.top_login_user,
+.top_login_password,
+.top_old_password_wrap,
+.top_new_password_wrap,
+.top_login_user_name,
+.top_login_user_password,
+.top_old_password,
+.top_new_password{
+    width: 300px;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #c7c7c7;
+    padding-left: 5px;
+}
 
 .top_login_user,
 .top_login_password,
 .top_old_password_wrap,
 .top_new_password_wrap {
-    width: 300px;
-    height: 40px;
     margin-bottom: 30px;
-    line-height: 40px;
-}
 
-.top_login_user_name,
-.top_login_user_password,
-.top_old_password,
-.top_new_password {
-    width: 240px;
-    height: 30px;
-    padding-left: 5px;
-    border: 1px solid #c7c7c7;
-    line-height: 30px;
 }
+.top_login_user_name,
+.top_login_user_password{
+    border: none;
+}
+/* 登录成功时的颜色 */
+.login_success_msg,
+.reg_success_msg{
+    right: 10px;
+    top: 10px;
+    width: 16px;
+    height: 16px;
+    background: url(../images/gn/form_icon.png) no-repeat 0 -17px;
+}
+/* 注册错误提示信息*/
+.reg_error{
+    top: 36px;
+    color: red;
+}
+.error_icon{
+    top: 6px;
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+    background: url(../images/gn/form_icon.png) no-repeat -17px 0;
+}
+.error_msg{
+    padding-left: 20px;
+}
+/*.top_login_user_name,*/
+/*.top_login_user_password,*/
+/*.top_old_password,*/
+/*.top_new_password {*/
+    /*left: 0;*/
+    /*top: 0;*/
+/*}*/
 
 .top_rember_status {
     height: 15px;
@@ -482,6 +519,7 @@ body {
     height: 430px;
 }
 
+
 .top_reg_title {
     background-image: url(../images/gn/reg_title_bg.png);
 }
@@ -494,9 +532,10 @@ body {
 .top_reg_password,
 .top_confirm_password,
 .top_reg_sex {
-    height: 56px;
-    margin-bottom: 10px;
-    margin-left: 22px;
+    width: 300px;
+    height: 34px;
+    border: 1px solid #b9b9b9;
+    margin: 0 0 30px 22px;
     line-height: 28px;
     position: relative;
 }
@@ -504,18 +543,18 @@ body {
 .top_reg_user_name,
 .top_reg_user_password,
 .top_reg_confirm_password {
-    width: 238px;
-    height: 25px;
-    margin-left: 10px;
-    border: 1px solid #b9b9b9;
+    width: 300px;
+    height: 34px;
+    padding-left: 5px;
 }
 
-.ts_left {
-    left: 72px;
+.ts_pos {
+    left: 5px;
+    top: 4px;
 }
 
 .top_reg_sex {
-    margin-left: 48px;
+    border: none;
 }
 
 .top_reg_sex span {
@@ -525,6 +564,12 @@ body {
 .top_reg_sub_btn {
     margin: 0 78px 10px;
 }
+/* 焦点颜色状态 */
+.inputColor{
+    border: 1px solid #08c;
+    box-shadow: 0 0 1px #8bd6fb;
+}
+
 
 /* 登录状态 */
 .top_login_status {

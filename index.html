@@ -18,9 +18,9 @@
     <div class="top_btn_box abs plt">
         <div class="top_btn_list abs" id="topBtnList">
             <a href="javascript:;">换肤</a><span>|</span>
-            <a class="dd bb" href="javascript:;">登陆</a><span>|</span>
+            <a href="javascript:;">登陆</a><span>|</span>
             <a href="javascript:;">注册</a><span>|</span>
-            <a class="dd nn" href="javascript:;">天气</a>
+            <a href="javascript:;">天气</a>
         </div>
     </div>
     <!--顶部功能区按钮结束-->
@@ -119,31 +119,31 @@
                 </ul>
                 <!--自定义-->
                 <ul>
-                    <li id="ftpImg" class="clear_fix">
+                    <li class="clear_fix">
                         <!--上传区域-->
-                        <div class="top_ftpArea fl tc">
+                        <div class="top_ftpArea fl tc" id="uploadArea">
 
                         </div>
                         <!--上传操作-->
                         <div class="top_ftpAction fr">
                             <div class="top_fileInput">
                                 <div id="upFileBtn" class="top_upFileBtn poi cf ovh tc">上传图片</div>
-                                <input type="file" name="upImg" id="upImg" class="hide"/>
+                                <input type="file" name="upInput" id="upInput" class="hide"/>
                             </div>
                             <!--上传须知-->
-                            <div class="top_upload_notes" id="demand_info">
+                            <div class="top_upload_notes" id="uploadNotes">
                                 <p>上传须知</p>
                                 <p>图片大小：≤200k</p>
                                 <p>图片尺寸：≥1024*768</p>
                             </div>
-                            <div class="top_upload_detail hide" id="ftp_info">
+                            <div class="top_upload_detail hide" id="uploadInfo">
                                 <p>图片名称</p>
                                 <p>图片大小</p>
                                 <p>图片尺寸</p>
                             </div>
                             <div id="btn_box" class="top_confirm_btn">
-                                <input value="确定" type="button" class="top_useImg poi cf bdd"/>
-                                <input value = "取消" type="button" class="top_noImg poi bgff cf bdd"/>
+                                <input value="确定" type="button" class="top_useImg poi cf bdd" id="userImgBtn"/>
+                                <input value = "取消" type="button" class="top_noImg poi bgff cf bdd" id="cancelImgBtn"/>
                             </div>
                         </div>
                     </li>
@@ -155,21 +155,21 @@
     </div>
     <!--皮肤盒子结束-->
     <!--登录界面开始-->
-    <div style="display: none;" class="top_login abs ovh hide plt" id="login">
+    <div class="top_login abs ovh hide plt" id="loginPlate">
         <div id="login_top" class="top_login_title rel">
-            <a href="javascript:;" class="close_btn abs poi"></a>
+            <a id="closeLoginBtn" href="javascript:;" class="close_btn abs poi"></a>
         </div>
         <div class="top_login_panel">
             <form class="top_login_form" method="post" action="#">
-                <div class="top_login_user rel">
-                    <span class="ts fl">用户名</span>
-                    <input class="top_login_user_name fr" id="user" type="text"/>
-                    <span class="msg abs">手机号/电话/邮箱</span>
+                <div id="loginUser" class="top_login_user rel">
+                    <!--<span class="ts fl">用户名</span>-->
+                    <input class="top_login_user_name abs plt" id="loginUserName" type="text"/>
+                    <span id="loginUserNameMsg" class="msg abs">手机号</span>
                 </div>
-                <div class="top_login_password rel">
-                    <span class="ts2 fl">密码</span>
-                    <input class="top_login_user_password fr" id="pas" type="password"/>
-                    <span class="msg abs">密码</span>
+                <div id="loginPas" class="top_login_password rel">
+                    <!--<span class="ts2 fl">密码</span>-->
+                    <input class="top_login_user_password abs plt" id="loginUserPas" type="password"/>
+                    <span id="loginUserPasMsg" class="msg abs">密码</span>
                 </div>
                 <p class="top_rember_status"><label><input id="remember" type="checkbox">记住我的密码</label></p>
                 <a class="top_reg_btn" href="javascript:;">注册</a>
@@ -179,34 +179,50 @@
     </div>
     <!--登录界面结束-->
     <!--注册界面-->
-    <div style="display: none;" class="top_reg abs ovh hide plt">
+    <div class="top_reg abs ovh plt" id="regPlate">
         <div id="land_title" class="top_reg_title">
-            <a href="javascript:;" class="close_btn abs"></a>
+            <a id="closeRegBtn" href="javascript:;" class="close_btn abs"></a>
         </div>
         <form class="top_reg_panel" id="land"  method="post">
-            <div class="top_reg_user">
-                <span class="ts fl">&nbsp;用户名</span>
-                <input class="top_reg_user_name fl" id="username" type="text" name="username"/>
-                <span class="msg ts_left abs">请输入您的手机号</span>
+            <div class="top_reg_user" id="regUser">
+                <!--<span class="ts fl">&nbsp;用户名</span>-->
+                <input class="top_reg_user_name fl" id="regUserName" type="text" name="username"/>
+                <span class="msg ts_pos abs" id="regUserNameMsg">请输入您的手机号</span>
+                <span class="reg_success_msg abs hide" id="regUserNameSuccessMsg"></span>
+                <div class="reg_error abs" id="regUserNameError">
+                    <i class="error_icon abs hide"></i>
+                    <!--<span class="error_msg hide">请输入手机号</span>-->
+                    <span class="error_msg hide">手机号格式不正确</span>
+                </div>
             </div>
-            <div class="top_reg_password">
-                <span class="ts fl">&nbsp;&nbsp;密码</span>
-                <input class="top_reg_user_password" type="password" id="password" name="password"/>
-                <span class="msg ts_left abs">密码为6-12个字符区分大小写</span>
+            <div class="top_reg_password" id="regPas">
+                <!--<span class="ts fl">&nbsp;&nbsp;密码</span>-->
+                <input class="top_reg_user_password" type="text" id="regUserPas" name="password"/>
+                <span class="msg ts_pos abs" id="regUserPasMsg">密码为6-12个数字、字母或数字和字符组合</span>
+                <span class="reg_success_msg abs hide" id="regUserPasSuccessMsg"></span>
+                <div class="reg_error abs" id="regUserPasError">
+                    <i class="error_icon abs hide"></i>
+                    <span class="error_msg hide">长度只能在6-12个字符之间</span>
+                </div>
             </div>
-            <div class="top_confirm_password">
-                <span class="ts fl">确认密码</span>
-                <input class="top_reg_confirm_password" type="password" id="password1" name="password1"/>
-                <span class="msg ts_left abs">请再次输入密码</span>
+            <div class="top_confirm_password" id="regCfmdPas">
+                <!--<span class="ts fl">确认密码</span>-->
+                <input class="top_reg_confirm_password" type="text" id="regCfmdUserPas" name="password1"/>
+                <span class="msg ts_left abs" id="regCfmdPasMsg">请再次输入密码</span>
+                <span class="reg_success_msg abs hide" id="regUserPasCfimSuccessMsg"></span>
+                <div class="reg_error abs" id="regUserPasCfimError">
+                    <i class="error_icon abs hide"></i>
+                    <span class="error_msg hide">两次密码不一致</span>
+                </div>
             </div>
-            <div class="top_reg_sex">
+            <div class="top_reg_sex" id="regSex">
                 <span class="ts fl">性别</span>
                 <input  type="radio" name="sex" value="男" id="man" checked="checked"/>
                 <label for="man">男</label>
                 <input  type="radio" name="sex" value="女" id="woman"/>
                 <label for="woman">女</label>
             </div>
-            <input class="top_reg_sub_btn poi cf" value="马上注册" id="register" type="button" name="register">
+            <input class="top_reg_sub_btn poi cf" value="马上注册" id="regBtn" type="button" name="register">
         </form>
     </div>
     <!--登陆状态-->
